@@ -434,7 +434,7 @@ body.sin-sesion main { padding-bottom: 60px; }
 .login-card .tabs { width: 100%; }
 .login-card .tabs .btn { flex: 1; min-width: 0; }
 .campo { display: flex; flex-direction: column; gap: 6px; text-align: left; }
-.campo span { font: 700 14px/1.2 var(--f-body); color: var(--fg-2); }
+.campo > span { font: 700 14px/1.2 var(--f-body); color: var(--fg-2); }
 .campo input, .campo select { width: 100%; min-height: 52px; padding: 12px 16px; border-radius: 14px; border: 1px solid var(--line-2); background: #0B2B26; color: #FFFFFF; font-size: 17px; }
 .campo input::placeholder { color: rgba(255, 255, 255, .45); }
 .campo input:focus, .campo select:focus { outline: none; border-color: var(--mint); box-shadow: 0 0 0 4px var(--glow); }
@@ -471,6 +471,16 @@ body.sin-sesion main { padding-bottom: 60px; }
   .al-caps { grid-template-columns: minmax(0, 1fr); }
   .bottomnav .btn { font-size: 12px; }
 }
+
+/* Contraseña con botón para mostrarla */
+.clave-wrap { position: relative; display: block; }
+.clave-wrap input { padding-right: 58px; }
+.ojo { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 10px; background: transparent; color: var(--fg-2); cursor: pointer; }
+.ojo:hover, .ojo:focus-visible { background: rgba(255, 255, 255, .1); color: #FFFFFF; }
+.ojo svg { width: 22px; height: 22px; }
+.ojo .ojo-ocultar { display: none; }
+.ojo[aria-pressed="true"] .ojo-ver { display: none; }
+.ojo[aria-pressed="true"] .ojo-ocultar { display: block; }
 </style>
 </head>
 <body>
@@ -488,7 +498,7 @@ body.sin-sesion main { padding-bottom: 60px; }
         <a class="btn btn-sm" href="#simulacro" data-go="simulacro" data-nav="simulacro">Simulacro</a>
         <a class="btn btn-sm" href="#progreso" data-go="progreso" data-nav="progreso">Progreso</a>
         <a class="btn btn-sm solo-profe" href="#panel" data-go="panel" data-nav="panel" hidden>Panel</a>
-        <button class="btn btn-sm" type="button" data-act="salir">Salir</button>
+        <button class="btn btn-sm" type="button" data-act="salir">Cerrar sesión</button>
       </nav>
     </div>
   </header>
@@ -1560,7 +1570,7 @@ function dibujarPregunta() {
   }
   if (r) cuerpo += `<button class="btn btn-primary btn-big" type="button" data-act="siguiente">${s.i < s.qs.length - 1 ? 'Siguiente' : 'Ver mi resultado'}</button>`;
   view.innerHTML = `<div class="narrow quiz">
-    <div class="row-between"><span class="label">${esc(selNombre(s.sel))}</span><button class="btn btn-sm" type="button" data-act="salir">Salir</button></div>
+    <div class="row-between"><span class="label">${esc(selNombre(s.sel))}</span><button class="btn btn-sm" type="button" data-act="sim-salir">Salir</button></div>
     ${cab}${cuerpo}</div>`;
   const fb = $('.fb', view);
   if (fb) { const b = fb.getBoundingClientRect(); if (b.bottom > innerHeight - 90) fb.scrollIntoView({ block: 'center', behavior: RM() ? 'auto' : 'smooth' }); }
@@ -1657,7 +1667,8 @@ function progPanel(tab) {
     </div>`;
 }
 
-/* ---------- Cuentas: entrar y crear cuenta ---------- */
+/* ---------- Cuentas: iniciar sesión y crear cuenta ---------- */
+const OJO = '<svg class="ojo-ver" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><svg class="ojo-ocultar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.6 5.1A10.8 10.8 0 0 1 12 5c6.4 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.2M6.6 6.6C3.8 8.4 2 12 2 12s3.6 7 10 7a10 10 0 0 0 5.4-1.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>';
 const limpiarUsuario = u => String(u).trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 const usuarioValido = u => /^[a-z0-9._-]{3,30}$/.test(u);
 const MSG = {
@@ -1665,7 +1676,7 @@ const MSG = {
   'auth/wrong-password': 'Usuario o contraseña incorrectos',
   'auth/user-not-found': 'Usuario o contraseña incorrectos',
   'auth/invalid-email': 'Ese usuario no es válido',
-  'auth/email-already-in-use': 'Ese usuario ya existe, elige otro',
+  'auth/email-already-in-use': 'Ese usuario ya está en uso, elige otro',
   'auth/weak-password': 'La contraseña debe tener al menos 6 caracteres',
   'auth/too-many-requests': 'Demasiados intentos, espera unos minutos y vuelve a probar',
   'auth/network-request-failed': 'No hay conexión a internet'
@@ -1679,18 +1690,18 @@ function renderLogin(modo) {
     <h1 class="h-display titulo" id="titulo" aria-label="Ética Pastoral">${letras('Ética Pastoral')}</h1>
     <p class="sub centro">De pastor a pastor</p>
     <div class="card login-card">
-      <div class="tabs centrado" role="tablist" aria-label="Entrar o crear cuenta">
-        <button class="btn" type="button" role="tab" aria-selected="${!crear}" data-act="login-modo" data-k="entrar">Entrar</button>
+      <div class="tabs centrado" role="tablist" aria-label="Iniciar sesión o crear cuenta">
+        <button class="btn" type="button" role="tab" aria-selected="${!crear}" data-act="login-modo" data-k="entrar">Iniciar sesión</button>
         <button class="btn" type="button" role="tab" aria-selected="${crear}" data-act="login-modo" data-k="crear">Crear cuenta</button>
       </div>
       <form id="loginForm" class="col" style="gap:14px" novalidate>
         ${crear ? `<label class="campo"><span>Nombre completo</span><input id="fNombre" name="nombre" type="text" autocomplete="name" required maxlength="80" placeholder="Por ejemplo, Juan Pérez Mora"></label>` : ''}
         <label class="campo"><span>Usuario</span><input id="fUsuario" name="usuario" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required maxlength="30" placeholder="Por ejemplo, juan.perez"></label>
         ${crear ? '<p class="muted small ayuda">Sin espacios ni tildes, puedes usar letras, números, punto o guion</p>' : ''}
-        <label class="campo"><span>Contraseña</span><input id="fClave" name="clave" type="password" autocomplete="${crear ? 'new-password' : 'current-password'}" required minlength="6" placeholder="Mínimo 6 caracteres"></label>
-        ${crear ? `<label class="campo"><span>Repite la contraseña</span><input id="fClave2" name="clave2" type="password" autocomplete="new-password" required minlength="6"></label>` : ''}
+        <label class="campo"><span>Contraseña</span><span class="clave-wrap"><input id="fClave" name="fClave" type="password" autocomplete="${crear ? 'new-password' : 'current-password'}" required minlength="6" placeholder="Mínimo 6 caracteres"><button class="ojo" type="button" data-act="ojo" data-k="fClave" aria-label="Mostrar contraseña" aria-pressed="false">${OJO}</button></span></label>
+        ${crear ? `<label class="campo"><span>Repite la contraseña</span><span class="clave-wrap"><input id="fClave2" name="fClave2" type="password" autocomplete="new-password" required minlength="6"><button class="ojo" type="button" data-act="ojo" data-k="fClave2" aria-label="Mostrar contraseña" aria-pressed="false">${OJO}</button></span></label>` : ''}
         <p class="error" id="loginError" role="alert" hidden></p>
-        <button class="btn btn-primary btn-big" type="submit" id="loginBtn">${crear ? 'Crear mi cuenta' : 'Entrar'}</button>
+        <button class="btn btn-primary btn-big" type="submit" id="loginBtn">${crear ? 'Crear mi cuenta' : 'Iniciar sesión'}</button>
       </form>
       <p class="muted small centro">${crear ? 'Tu progreso se guardará en tu cuenta y podrás seguir desde cualquier celular o computadora' : 'Si olvidaste tu contraseña, pídele ayuda a tu profesor'}</p>
     </div>
@@ -1713,7 +1724,7 @@ async function enviarLogin(e) {
     if (nombre.length < 3) return mostrar('Escribe tu nombre completo');
     if (clave !== $('#fClave2').value) return mostrar('Las contraseñas no coinciden');
   }
-  btn.disabled = true; btn.textContent = crear ? 'Creando tu cuenta…' : 'Entrando…';
+  btn.disabled = true; btn.textContent = crear ? 'Creando tu cuenta…' : 'Iniciando sesión…';
   try {
     if (crear) {
       state.nuevo = { nombre, usuario };
@@ -1725,12 +1736,13 @@ async function enviarLogin(e) {
   } catch (ex) {
     state.nuevo = null;
     mostrar(MSG[ex.code] || 'No se pudo completar, inténtalo de nuevo');
-    btn.disabled = false; btn.textContent = crear ? 'Crear mi cuenta' : 'Entrar';
+    btn.disabled = false; btn.textContent = crear ? 'Crear mi cuenta' : 'Iniciar sesión';
   }
 }
 async function cargarSesion(user) {
   SES.uid = user.uid;
   SES.usuario = (user.email || '').replace(DOMINIO, '');
+  P.leidos = {}; P.sims = []; Object.assign(state, { tab: {}, nodo: 1, progTab: 'general', simSel: 'todos', sim: null, hoja: null });
   view.innerHTML = '<p class="muted centro" style="padding:60px 0">Cargando tu progreso…</p>';
   try {
     let snap = await getDoc(doc(fdb, 'usuarios', user.uid));
@@ -1839,6 +1851,7 @@ document.addEventListener('click', e => {
   switch (a) {
     case 'nodo': elegirNodo(+k); break;
     case 'login-modo': renderLogin(k); break;
+    case 'ojo': { const inp = document.getElementById(k); if (!inp) break; const ver = inp.type === 'password'; inp.type = ver ? 'text' : 'password'; t.setAttribute('aria-pressed', ver); t.setAttribute('aria-label', ver ? 'Ocultar contraseña' : 'Mostrar contraseña'); break; }
     case 'salir': salir(); break;
     case 'panel-recargar': renderPanel(); break;
     case 'tab': { const n = +state.route.slice(4); state.tab[n] = k; renderCap(n); const tb = $(`[data-act="tab"][data-k="${k}"]`); if (tb) tb.focus({ preventScroll: true }); break; }
@@ -1858,12 +1871,12 @@ document.addEventListener('click', e => {
       break;
     }
     case 'siguiente': s.i++; s.borrador = null; dibujarPregunta(); window.scrollTo(0, 0); break;
-    case 'salir': state.sim = null; renderSim(); break;
+    case 'sim-salir': state.sim = null; renderSim(); break;
     case 'otro': state.sim = null; renderSim(); window.scrollTo(0, 0); break;
     case 'progtab': state.progTab = k; renderProgreso(); { const tb = $(`[data-act="progtab"][data-k="${k}"]`); if (tb) tb.focus({ preventScroll: true }); } break;
     case 'reset': $('#resetBox').innerHTML = '<span class="small" style="width:100%">¿Seguro? Esto no se puede deshacer</span><button class="btn btn-primary" type="button" data-act="reset-si">Sí, borrar todo</button><button class="btn" type="button" data-act="reset-no">Cancelar</button>'; break;
     case 'reset-no': renderProgreso(); break;
-    case 'reset-si': P.leidos = {}; P.sims = []; save('leidos'); save('sims'); state.progTab = 'general'; renderProgreso(); toast('Listo, empiezas desde cero'); break;
+    case 'reset-si': P.leidos = {}; P.sims = []; state.sim = null; save('leidos'); save('sims'); state.progTab = 'general'; renderProgreso(); toast('Listo, empiezas desde cero'); break;
   }
 });
 document.addEventListener('change', e => {
