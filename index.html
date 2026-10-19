@@ -1,0 +1,1900 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#051F20">
+<title>Guía de Ética Pastoral</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Guía interactiva para preparar el examen de Ética Pastoral (De pastor a pastor, capítulos 1 al 7).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: una columna centrada, cuatro secciones (Inicio, Capítulos, Simulacro, Progreso).
+   Menú arriba en computadora y abajo en celular. Un solo tema verde oscuro con texto siempre blanco. */
+:root {
+  color-scheme: dark;
+  --bg: #051F20;
+  --fg: #FFFFFF;
+  --fg-2: rgba(255, 255, 255, .9);
+  --fg-3: rgba(255, 255, 255, .76);
+  --surface: rgba(11, 43, 38, .62);
+  --surface-2: rgba(22, 56, 50, .88);
+  --line: rgba(218, 241, 222, .16);
+  --line-2: rgba(218, 241, 222, .3);
+  --green: #288760;
+  --green-hi: #33A374;
+  --mint: #B7E5BA;
+  --glow: rgba(92, 168, 124, .35);
+  --ok: #7FE0A6;
+  --ok-bg: rgba(127, 224, 166, .14);
+  --bad: #FF9E85;
+  --bad-bg: rgba(255, 158, 133, .14);
+  --topbar: rgba(5, 31, 32, .82);
+  --f-display: "Inter Tight", "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --r-lg: 22px; --r-md: 16px;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  /* Anillos del diagrama: del centro (más claro) hacia afuera (más oscuro). Todos llevan texto blanco. */
+  --c1: #2A8A66; --c2: #247B5C; --c3: #1F6C51; --c4: #1A5E47; --c5: #16513E; --c6: #124536; --c7: #0F3A2F;
+}
+[hidden] { display: none !important; }
+*, *::before, *::after { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 17px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; }
+button, select { font: inherit; color: inherit; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mint); outline-offset: 3px; border-radius: 8px; }
+
+/* Fondo: manchas verdes, haz de luz, cuadrícula y grano */
+.bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; background: var(--bg); }
+.blob { position: absolute; border-radius: 50%; filter: blur(80px); }
+.b1 { width: 70vmax; height: 70vmax; left: -24vmax; top: -32vmax; background: radial-gradient(circle, #5CA87C 0%, transparent 62%); opacity: .45; animation: d1 40s ease-in-out infinite alternate; }
+.b2 { width: 64vmax; height: 64vmax; right: -26vmax; bottom: -28vmax; background: radial-gradient(circle, #288760 0%, transparent 64%); opacity: .6; animation: d2 46s ease-in-out infinite alternate; }
+.b3 { width: 44vmax; height: 44vmax; right: 6vw; top: -12vmax; background: radial-gradient(circle, #12202A 0%, transparent 66%); opacity: .7; }
+.beam { position: absolute; inset: -10%; background: radial-gradient(ellipse 48% 38% at 8% 0%, rgba(218, 241, 222, .14), transparent 70%); }
+.gridlines { position: absolute; inset: 0; background-image: linear-gradient(rgba(218, 241, 222, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(218, 241, 222, .05) 1px, transparent 1px); background-size: 96px 96px; }
+.grain { position: absolute; inset: 0; opacity: .1; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+@keyframes d1 { to { transform: translate(8vmax, 6vmax) scale(1.08); } }
+@keyframes d2 { to { transform: translate(-7vmax, -5vmax) scale(1.1); } }
+
+/* Estructura */
+.app { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; }
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--topbar); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--line);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 12px; }
+.topbar-in { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: inline-flex; flex-direction: column; font: 800 14px/1.1 var(--f-display); letter-spacing: .06em; text-transform: uppercase; text-decoration: none; }
+.brand span:last-child { color: var(--fg-3); }
+.mainnav { display: flex; gap: 8px; }
+main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 32px 72px; }
+.view { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.narrow { max-width: 780px; width: 100%; }
+
+/* Botones */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 20px; border-radius: 999px; border: 1px solid var(--line-2);
+  background: var(--surface-2); color: var(--fg); font: 600 16px/1.2 var(--f-body); text-decoration: none; cursor: pointer; text-align: center;
+  transition: background-color .2s, border-color .2s, box-shadow .2s, transform .2s var(--ease); -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) { .btn:hover { background: var(--green); border-color: transparent; box-shadow: 0 0 0 4px var(--glow); transform: translateY(-2px); } }
+.btn:active { transform: scale(.97); background: var(--green); }
+.btn[aria-current="page"], .btn[aria-pressed="true"], .btn[aria-selected="true"] { background: var(--green); border-color: transparent; color: #FFFFFF; }
+.btn-primary { background: var(--green); border-color: transparent; }
+@media (hover: hover) { .btn-primary:hover { background: var(--green-hi); } }
+.btn-big { min-height: 60px; padding: 16px 34px; font-size: 19px; }
+.btn-sm { min-height: 40px; padding: 8px 16px; font-size: 15px; }
+.btn[disabled] { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.row-between { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+
+/* Textos */
+.eyebrow { display: flex; gap: 28px; flex-wrap: wrap; }
+.lab2 { display: inline-flex; flex-direction: column; font: 700 13px/1.2 var(--f-display); letter-spacing: .06em; text-transform: uppercase; }
+.lab2 span:last-child { color: var(--fg-3); }
+.h-display { font: 800 clamp(56px, 9vw, 116px)/.95 var(--f-display); letter-spacing: -.045em; padding-top: .1em; margin-top: -.1em;
+  background: linear-gradient(170deg, #FFFFFF 15%, #B7E5BA 95%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.h1 { font: 800 clamp(32px, 4.6vw, 52px)/1.04 var(--f-display); letter-spacing: -.035em; padding-top: .08em; }
+.h2 { font: 750 clamp(22px, 2.6vw, 27px)/1.2 var(--f-display); letter-spacing: -.02em; }
+.sub { font: 600 clamp(19px, 2.2vw, 23px)/1.3 var(--f-display); color: var(--fg-2); }
+.lead { font-size: 18.5px; line-height: 1.6; color: var(--fg-2); max-width: 58ch; }
+.muted { color: var(--fg-3); }
+.small { font-size: 15px; }
+.label { font: 700 13px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mint); }
+
+/* Tarjetas */
+.card { border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); padding: 22px; min-width: 0; }
+.card-strong { background: var(--surface-2); }
+
+/* Inicio */
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: center; }
+.hero-txt { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.circles { display: flex; flex-direction: column; align-items: center; gap: 18px; min-width: 0; }
+.diagram { width: 100%; max-width: 300px; height: auto; aspect-ratio: 1; }
+.diagram text { font-family: var(--f-mono); font-weight: 600; letter-spacing: .06em; fill: #FFFFFF; }
+.legend { list-style: none; margin: 0; padding: 0; width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 8px; }
+.legend li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; align-items: start; font-size: 15.5px; line-height: 1.45; }
+.legend .num { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font: 700 13px/1 var(--f-mono); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, .25); }
+.legend strong { font-weight: 700; }
+
+/* Lista de capítulos */
+.caplist { display: flex; flex-direction: column; gap: 12px; }
+.capitem { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 16px 18px; border-radius: var(--r-lg);
+  border: 1px solid var(--line); background: var(--surface); text-decoration: none; color: var(--fg);
+  transition: background-color .2s, border-color .2s, box-shadow .2s, transform .2s var(--ease); -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) { .capitem:hover { background: var(--green); border-color: transparent; box-shadow: 0 0 0 4px var(--glow); transform: translateY(-2px); } }
+.capitem:active { background: var(--green); transform: scale(.99); }
+.capitem .badge { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; font: 800 20px/1 var(--f-display); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, .28); }
+.capitem .t { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.capitem .t b { font: 700 18px/1.3 var(--f-display); letter-spacing: -.01em; }
+.capitem .st { font: 600 13px/1 var(--f-mono); padding: 7px 10px; border-radius: 999px; border: 1px solid var(--line-2); white-space: nowrap; }
+.capitem .st.ok { background: rgba(255, 255, 255, .14); }
+.arrow { font-size: 20px; }
+
+/* Capítulo */
+.back { align-self: flex-start; }
+.tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); width: fit-content; max-width: 100%; }
+.tabs .btn { min-width: 130px; border-color: transparent; background: transparent; }
+.tabs .btn[aria-selected="true"] { background: var(--green); }
+.index { display: flex; flex-direction: column; gap: 4px; }
+.index a { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 10px; padding: 9px 12px; border-radius: 12px; text-decoration: none; font-size: 16px; line-height: 1.35; }
+.index a:hover, .index a:focus-visible { background: rgba(255, 255, 255, .08); }
+.index .n { font: 600 13.5px/1.6 var(--f-mono); color: var(--mint); }
+.sec { scroll-margin-top: 90px; display: flex; flex-direction: column; gap: 12px; padding-top: 10px; }
+.sec + .sec { border-top: 1px solid var(--line); padding-top: 28px; }
+.sec .n { font: 600 14px/1 var(--f-mono); color: var(--mint); }
+.prose { display: flex; flex-direction: column; gap: 12px; color: var(--fg-2); }
+.prose strong { color: #FFFFFF; font-weight: 700; }
+.prose ul, .prose ol { margin: 0; padding-left: 24px; display: flex; flex-direction: column; gap: 8px; }
+.prose li::marker { color: var(--mint); }
+.chapter-end { display: flex; flex-direction: column; gap: 14px; }
+.idea { font: 700 clamp(20px, 2.4vw, 24px)/1.4 var(--f-display); letter-spacing: -.01em; }
+.points { margin: 0; padding-left: 24px; display: flex; flex-direction: column; gap: 10px; color: var(--fg-2); }
+.points li::marker { color: var(--mint); }
+.recuerda { border-left: 4px solid var(--mint); }
+
+/* Simulacro */
+.choices { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+.quiz { display: flex; flex-direction: column; gap: 18px; }
+.qhead { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; color: var(--fg-3); font-size: 15px; }
+.tag { font: 600 13px/1 var(--f-mono); padding: 7px 10px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--fg); }
+.bar { height: 8px; border-radius: 999px; background: rgba(255, 255, 255, .1); overflow: hidden; }
+.bar > i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--green), var(--mint)); transition: width .4s var(--ease); }
+.qtext { font: 700 clamp(21px, 2.6vw, 26px)/1.35 var(--f-display); letter-spacing: -.01em; }
+.opts { display: flex; flex-direction: column; gap: 10px; }
+.opt { display: flex; align-items: flex-start; gap: 14px; width: 100%; min-height: 58px; padding: 14px 16px; border-radius: var(--r-md); border: 1px solid var(--line-2); background: var(--surface);
+  text-align: left; font-size: 17px; line-height: 1.45; cursor: pointer; transition: background-color .2s, border-color .2s, box-shadow .2s; -webkit-tap-highlight-color: transparent; }
+.opt .k { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font: 700 14px/1 var(--f-display); background: rgba(255, 255, 255, .12); }
+@media (hover: hover) { .opt:not([disabled]):hover { background: var(--green); border-color: transparent; box-shadow: 0 0 0 4px var(--glow); } }
+.opt[disabled] { cursor: default; }
+.opt.right { border-color: var(--ok); background: var(--ok-bg); }
+.opt.right .k { background: var(--ok); color: #05301F; }
+.opt.wrong { border-color: var(--bad); background: var(--bad-bg); }
+.opt.wrong .k { background: var(--bad); color: #3A1206; }
+.opt.dim { opacity: .55; }
+.fb { border-radius: var(--r-md); padding: 16px 18px; border: 1px solid var(--line-2); background: var(--surface-2); display: flex; flex-direction: column; gap: 6px; }
+.fb.ok { border-color: var(--ok); }
+.fb.bad { border-color: var(--bad); }
+.fb .t { font: 700 18px/1.3 var(--f-display); }
+.fb.ok .t { color: var(--ok); }
+.fb.bad .t { color: var(--bad); }
+.pareo { display: flex; flex-direction: column; gap: 12px; }
+.prow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 12px; align-items: center; padding: 12px 14px; border-radius: var(--r-md); border: 1px solid var(--line); background: var(--surface); }
+.prow .l { font-weight: 700; }
+.prow select { width: 100%; min-height: 50px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line-2); background: #0B2B26; color: #FFFFFF; font-size: 16px; }
+.prow select:focus { outline: 3px solid var(--mint); outline-offset: 2px; }
+.prow.right { border-color: var(--ok); background: var(--ok-bg); }
+.prow.wrong { border-color: var(--bad); background: var(--bad-bg); }
+.prow .ans { grid-column: 1 / -1; font-size: 15.5px; }
+.score { font: 800 clamp(64px, 10vw, 96px)/1 var(--f-display); letter-spacing: -.04em; }
+.review { display: flex; flex-direction: column; gap: 10px; }
+.ritem { padding: 14px 16px; border-radius: var(--r-md); border: 1px solid var(--line); background: var(--surface); display: flex; flex-direction: column; gap: 4px; }
+.ritem.bad { border-color: var(--bad); }
+.ritem .mk { font: 700 13px/1 var(--f-mono); }
+.ritem.ok .mk { color: var(--ok); }
+.ritem.bad .mk { color: var(--bad); }
+
+/* Progreso */
+.plist { display: flex; flex-direction: column; gap: 10px; }
+.prog-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 12px 14px; border-radius: var(--r-md); border: 1px solid var(--line); background: var(--surface); }
+.hist { display: grid; grid-template-columns: 90px minmax(0, 1fr) 56px; gap: 12px; align-items: center; font-size: 15px; }
+
+/* Menú inferior y botón subir */
+.bottomnav { display: none; }
+#toTop { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); z-index: 35; min-height: 48px; box-shadow: 0 10px 24px -10px rgba(0, 0, 0, .6); }
+#toast { position: fixed; z-index: 90; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  padding: 13px 20px; border-radius: 999px; background: var(--green); color: #FFFFFF; font-weight: 600; font-size: 16px; box-shadow: 0 12px 30px -12px rgba(0, 0, 0, .7);
+  transition: opacity .25s, transform .25s var(--ease); max-width: calc(100vw - 32px); text-align: center; }
+#toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .circles { align-items: stretch; }
+  .diagram { align-self: center; max-width: 260px; }
+  .legend { max-width: none; }
+}
+@media (max-width: 760px) {
+  body { font-size: 17px; }
+  .mainnav { display: none; }
+  main { padding-top: 22px; padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px)); }
+  .bottomnav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: var(--topbar);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-top: 1px solid var(--line);
+    padding-left: max(8px, env(safe-area-inset-left, 0px)); padding-right: max(8px, env(safe-area-inset-right, 0px)); padding-top: 8px; padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px)); }
+  .bottomnav .btn { flex-direction: column; gap: 4px; min-height: 60px; padding: 6px 4px; border-radius: 16px; font-size: 13px; border-color: transparent; background: transparent; }
+  .bottomnav .btn[aria-current="page"] { background: var(--green); }
+  .bottomnav svg { width: 22px; height: 22px; }
+  #toTop { bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
+  #toast { bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+  .tabs { width: 100%; }
+  .tabs .btn { flex: 1; min-width: 0; }
+  .capitem { grid-template-columns: 44px minmax(0, 1fr); padding: 14px; gap: 14px; }
+  .capitem .badge { width: 44px; height: 44px; font-size: 18px; }
+  .capitem .end { grid-column: 2; justify-self: start; }
+  .prow { grid-template-columns: minmax(0, 1fr); }
+  .btn-big { width: 100%; }
+  .card { padding: 18px; }
+  .index a { grid-template-columns: 62px minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+.stack { display: flex; flex-direction: column; gap: 10px; }
+@media (max-width: 760px) { .capitem .arrow { display: none; } }
+
+/* ===== Versión 3 ===== */
+.col { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+body.no-scroll { overflow: hidden; }
+
+/* Inicio: texto y línea de capítulos con resumen */
+.home { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 44px; align-items: start; }
+.home .hero-txt { position: sticky; top: 110px; }
+.journey { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+#linea { scroll-margin-top: 90px; }
+.track { position: relative; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); align-items: start; padding: 4px 0; }
+.track .line { position: absolute; left: calc(100% / 14); right: calc(100% / 14); top: 31px; height: 4px; border-radius: 4px; background: rgba(255, 255, 255, .14); }
+.track .line i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--mint), var(--green)); transition: width .45s var(--ease); }
+.node { position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 0 2px; background: none; border: 0; cursor: pointer; color: var(--fg); -webkit-tap-highlight-color: transparent; }
+.node .dotwrap { height: 62px; display: grid; place-items: center; }
+.node .dot { width: var(--s); height: var(--s); border-radius: 50%; display: grid; place-items: center; font: 800 16px/1 var(--f-display); background: var(--cc); border: 2px solid rgba(255, 255, 255, .28);
+  box-shadow: 0 0 0 4px var(--bg); transition: transform .25s var(--ease), box-shadow .25s, border-color .25s; }
+.node .nm { font: 600 13px/1.2 var(--f-body); color: var(--fg-3); text-align: center; transition: color .2s; }
+@media (hover: hover) { .node:hover .dot { transform: scale(1.1); border-color: #FFFFFF; box-shadow: 0 0 0 4px var(--bg), 0 0 0 8px var(--glow); } .node:hover .nm { color: #FFFFFF; } }
+.node.past .dot { border-color: var(--mint); }
+.node.on .dot { background: var(--green); border-color: #FFFFFF; transform: scale(1.15); box-shadow: 0 0 0 4px var(--bg), 0 0 0 9px var(--glow), 0 0 28px 4px rgba(92, 168, 124, .45); }
+.node.on .nm { color: #FFFFFF; font-weight: 800; }
+.jpanel { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 16px; padding: 26px; background: var(--surface-2); }
+.jpanel > * { position: relative; }
+.jpanel::before { content: ""; position: absolute; width: 760px; height: 760px; right: -380px; top: -380px; border-radius: 50%; pointer-events: none;
+  background: repeating-radial-gradient(circle, transparent 0 34px, rgba(183, 229, 186, .07) 34px 36px); }
+.jpanel.swap > * { animation: swapIn .4s var(--ease); }
+@keyframes swapIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.jp-head { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 14px; align-items: center; }
+.jp-num { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; font: 800 22px/1 var(--f-display); border: 2px solid rgba(255, 255, 255, .3); }
+.jp-rec { border-left: 4px solid var(--mint); padding-left: 14px; color: var(--fg-2); font-style: italic; }
+
+/* Lista de capítulos con avance */
+.capitem { grid-template-columns: 52px minmax(0, 1fr); }
+.mini { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+.mini .bar { flex: 1; max-width: 220px; height: 6px; }
+@media (hover: hover) { .capitem:hover .bar > i { background: #FFFFFF; } }
+
+/* Subtítulos como bloques */
+.sublist { display: flex; flex-direction: column; gap: 10px; }
+.subitem { display: grid; grid-template-columns: 64px minmax(0, 1fr) 34px; gap: 12px; align-items: center; width: 100%; min-height: 60px; padding: 12px 14px; border-radius: var(--r-md);
+  border: 1px solid var(--line); background: var(--surface); text-align: left; cursor: pointer; font-size: 17px; line-height: 1.35;
+  transition: background-color .2s, border-color .2s, box-shadow .2s, transform .2s var(--ease); -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) { .subitem:hover { background: var(--green); border-color: transparent; box-shadow: 0 0 0 4px var(--glow); transform: translateY(-1px); } .subitem:hover .n { color: #FFFFFF; } }
+.subitem:active { background: var(--green); }
+.subitem .n { font: 600 14px/1 var(--f-mono); color: var(--mint); }
+.subitem .tt { font-weight: 600; }
+.subitem .chk { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; border: 2px solid var(--line-2); font-weight: 800; font-size: 15px; }
+.subitem.read .chk { background: var(--mint); border-color: var(--mint); color: #05301F; }
+
+/* Bloque central */
+.sheet { position: fixed; inset: 0; z-index: 70; display: flex; align-items: center; justify-content: center;
+  padding: calc(env(safe-area-inset-top, 0px) + 24px) max(16px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 24px) max(16px, env(safe-area-inset-left, 0px)); }
+.sheet-bg { position: absolute; inset: 0; background: rgba(3, 18, 18, .62); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); animation: fadeIn .2s ease; }
+.sheet-card { position: relative; width: 100%; max-width: 760px; max-height: 100%; display: flex; flex-direction: column; border-radius: 24px; border: 1px solid var(--line-2);
+  background: #0B2B26; box-shadow: 0 30px 70px -20px rgba(0, 0, 0, .8); overflow: hidden; animation: popIn .28s var(--ease); }
+.sheet-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; padding: 20px 22px 14px; border-bottom: 1px solid var(--line); }
+.sheet-x { flex: none; width: 46px; padding: 0; font-size: 18px; }
+.sheet-body { overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding: 20px 22px 26px; flex: 1; min-height: 0; }
+.sheet-body:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--mint); }
+.sheet-foot { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; padding: 12px 16px; border-top: 1px solid var(--line); background: rgba(5, 31, 32, .6); }
+.sheet-foot #sheetPrev { justify-self: start; }
+.sheet-foot #sheetNext { justify-self: end; }
+@keyframes fadeIn { from { opacity: 0; } }
+@keyframes popIn { from { opacity: 0; transform: translateY(18px) scale(.98); } }
+@keyframes slideUp { from { transform: translateY(40px); opacity: 0; } }
+
+/* Progreso */
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.stat { display: flex; flex-direction: column; gap: 4px; }
+.stat .big { font: 800 clamp(34px, 5vw, 44px)/1.05 var(--f-display); letter-spacing: -.03em; }
+.caprog { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.cp { display: flex; flex-direction: column; gap: 12px; }
+.cp-head { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; align-items: center; }
+.cp-head .badge { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font: 800 17px/1 var(--f-display); border: 1px solid rgba(255, 255, 255, .28); }
+.cp-head b { font: 700 16px/1.3 var(--f-display); }
+.cp-row { display: grid; grid-template-columns: 62px minmax(0, 1fr) 48px; gap: 10px; align-items: center; }
+.cp-row strong { text-align: right; }
+.cp-sims { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 10px 12px; border-radius: 12px; background: rgba(255, 255, 255, .05); }
+.cp-sims strong { font: 800 20px/1.2 var(--f-display); }
+
+@media (max-width: 960px) {
+  .home { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .home .hero-txt { position: static; }
+}
+@media (max-width: 760px) {
+  .capitem { grid-template-columns: 44px minmax(0, 1fr); }
+  .track .line { top: 27px; }
+  .node .dotwrap { height: 54px; }
+  .node .dot { width: calc(var(--s) * .82); height: calc(var(--s) * .82); font-size: 14px; }
+  .node .nm { font-size: 10.5px; }
+  .jpanel { padding: 20px 18px; }
+  .subitem { grid-template-columns: 50px minmax(0, 1fr) 30px; font-size: 16.5px; }
+  .sheet { padding: calc(env(safe-area-inset-top, 0px) + 10px) 0 0; align-items: flex-end; }
+  .sheet-card { max-width: none; border-radius: 22px 22px 0 0; height: 92%; max-height: none; animation: slideUp .3s var(--ease); }
+  .sheet-foot { padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); grid-template-columns: auto 1fr auto; }
+  .sheet-foot #sheetPrev, .sheet-foot #sheetNext { font-size: 0; width: 48px; padding: 0; }
+  .sheet-foot #sheetPrev::before { content: "←"; font-size: 20px; }
+  .sheet-foot #sheetNext::before { content: "→"; font-size: 20px; }
+  .stat .big { font-size: 32px; }
+  .caprog { grid-template-columns: minmax(0, 1fr); }
+}
+.node .nm { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: anywhere; max-width: 100%; }
+@media (max-width: 400px) { .node .nm { font-size: 9.5px; } }
+
+/* ===== Versión 4: todo centrado ===== */
+.narrow { margin-left: auto; margin-right: auto; }
+
+/* Inicio en una sola columna, a lo ancho y centrada */
+.home { display: flex; flex-direction: column; align-items: center; gap: 44px; max-width: 980px; margin: 0 auto; width: 100%; }
+.home .hero-txt { position: static; align-items: center; text-align: center; gap: 18px; width: 100%; }
+.home .eyebrow { justify-content: center; }
+.home .h-display br { display: none; }
+.home .h-display { font-size: clamp(54px, 8.5vw, 104px); }
+.home .lead { max-width: 64ch; margin: 0 auto; }
+.home .hero-txt .row { justify-content: center; }
+.journey { width: 100%; align-items: center; gap: 22px; }
+.journey > .label { text-align: center; }
+#linea { width: 100%; }
+.track { width: 100%; }
+.jpanel { width: 100%; max-width: 760px; align-items: center; text-align: center; gap: 12px; padding: 28px 30px; }
+.jpanel::before { right: auto; left: 50%; margin-left: -380px; top: -470px; }
+.jpanel .h2 { max-width: 30ch; }
+.jp-idea { font-size: 18.5px; line-height: 1.6; color: var(--fg-2); max-width: 56ch; }
+.jpanel .row { justify-content: center; margin-top: 6px; }
+
+/* Simulacro más grande y al centro */
+.quiz.narrow { max-width: 860px; gap: 22px; }
+.quiz .qhead { justify-content: center; }
+.quiz .qtext { font-size: clamp(24px, 3.2vw, 34px); line-height: 1.3; text-align: center; max-width: 30ch; margin: 8px auto 4px; }
+.quiz > .muted { text-align: center; }
+.opt { min-height: 66px; padding: 16px 20px; font-size: 19px; border-radius: 18px; }
+.opt .k { width: 34px; height: 34px; font-size: 15px; }
+.fb { text-align: left; }
+.quiz > .btn-big { align-self: center; min-width: 280px; }
+.prow { padding: 14px 16px; font-size: 18px; }
+.quiz .score { text-align: center; }
+.quiz > .lead { text-align: center; margin: 0 auto; }
+.quiz > .label { text-align: center; }
+.quiz > .row { justify-content: center; }
+.quiz > .h2 { text-align: center; }
+
+@media (max-width: 760px) {
+  .home { gap: 30px; }
+  .jpanel { padding: 22px 18px; }
+  .jp-idea { font-size: 17px; }
+  .quiz .qtext { font-size: 23px; }
+  .opt { font-size: 17.5px; min-height: 60px; }
+  .quiz > .btn-big { width: 100%; min-width: 0; }
+}
+.node .nm { hyphens: manual; -webkit-hyphens: manual; overflow-wrap: normal; }
+.stat .big { word-spacing: .12em; }
+
+/* ===== Versión 5 ===== */
+.topbar-in { justify-content: center; }
+.centro { text-align: center; align-items: center; }
+.label.centro { display: block; }
+.tabs.centrado { margin-left: auto; margin-right: auto; }
+.choices { width: 100%; }
+
+/* Título grande con letras que reaccionan */
+.home .h-display.titulo { font-size: clamp(64px, 11.5vw, 148px); line-height: 1; background: none; color: inherit; -webkit-text-fill-color: initial; margin-top: 0; padding-top: .06em; cursor: default; user-select: none; -webkit-user-select: none; }
+.titulo .palabra { display: inline-block; white-space: nowrap; }
+.titulo .letra { display: inline-block; transform-origin: 50% 85%; will-change: transform;
+  background: linear-gradient(170deg, #FFFFFF 15%, #B7E5BA 95%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  transition: transform .45s cubic-bezier(.2, 1.4, .4, 1), filter .3s; animation: letraIn .7s cubic-bezier(.2, .9, .3, 1.2) both; animation-delay: calc(var(--i) * 45ms); }
+.titulo .letra.cerca { filter: drop-shadow(0 0 16px rgba(183, 229, 186, .55)); background: linear-gradient(170deg, #FFFFFF 30%, #DAF1DE 100%); -webkit-background-clip: text; background-clip: text; }
+@keyframes letraIn { from { opacity: 0; transform: translateY(.45em) rotate(6deg); } }
+.home .lead { font-size: 19px; }
+
+/* Progreso con secciones */
+.prog-tabs { flex-wrap: wrap; justify-content: center; border-radius: 26px; }
+.prog-tabs .btn { min-width: 0; padding-inline: 20px; }
+
+@media (max-width: 760px) {
+  .topbar { display: none; }
+  .home .lead { font-size: 17.5px; }
+  .prog-tabs { width: 100%; }
+  .prog-tabs .btn { flex: 1 1 40%; font-size: 15px; padding-inline: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .titulo .letra { animation: none; transition: none; } }
+@media (max-width: 760px) { main { padding-top: calc(36px + env(safe-area-inset-top, 0px)); } }
+
+/* ===== Versión web con cuentas ===== */
+body.sin-sesion .topbar, body.sin-sesion .bottomnav, body.sin-sesion #toTop { display: none !important; }
+body.sin-sesion main { padding-bottom: 60px; }
+.login { display: flex; flex-direction: column; align-items: center; gap: 18px; max-width: 520px; margin: 0 auto; width: 100%; padding-top: 10px; }
+.login .h-display.titulo { font-size: clamp(54px, 10vw, 110px); line-height: 1; background: none; color: inherit; -webkit-text-fill-color: initial; text-align: center; margin: 0; padding-top: .06em; user-select: none; -webkit-user-select: none; }
+.login-card { width: 100%; display: flex; flex-direction: column; gap: 18px; padding: 24px; background: var(--surface-2); }
+.login-card .tabs { width: 100%; }
+.login-card .tabs .btn { flex: 1; min-width: 0; }
+.campo { display: flex; flex-direction: column; gap: 6px; text-align: left; }
+.campo span { font: 700 14px/1.2 var(--f-body); color: var(--fg-2); }
+.campo input, .campo select { width: 100%; min-height: 52px; padding: 12px 16px; border-radius: 14px; border: 1px solid var(--line-2); background: #0B2B26; color: #FFFFFF; font-size: 17px; }
+.campo input::placeholder { color: rgba(255, 255, 255, .45); }
+.campo input:focus, .campo select:focus { outline: none; border-color: var(--mint); box-shadow: 0 0 0 4px var(--glow); }
+.ayuda { margin-top: -6px; }
+.error { color: var(--bad); background: var(--bad-bg); border: 1px solid var(--bad); border-radius: 12px; padding: 10px 14px; font-weight: 600; text-align: center; }
+.hola { font: 700 18px/1.3 var(--f-display); color: var(--mint); }
+
+/* Panel del profesor */
+.panel-wrap { max-width: 960px; }
+.panel-tools { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto; gap: 12px; align-items: end; }
+.stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.alumnos { display: flex; flex-direction: column; gap: 10px; }
+.alumno { padding: 0; }
+.alumno summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.3fr) 90px 90px; gap: 14px; align-items: center; padding: 16px 18px; border-radius: var(--r-lg); }
+.alumno summary::-webkit-details-marker { display: none; }
+@media (hover: hover) { .alumno summary:hover { background: rgba(255, 255, 255, .05); } }
+.alumno[open] summary { border-bottom: 1px solid var(--line); border-radius: var(--r-lg) var(--r-lg) 0 0; }
+.al-nom { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.al-nom b { font: 700 17px/1.3 var(--f-display); }
+.al-bar { display: flex; flex-direction: column; gap: 6px; }
+.al-num { display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; }
+.al-num strong { font: 800 19px/1.2 var(--f-display); }
+.al-det { padding: 14px 18px 18px; display: flex; flex-direction: column; gap: 12px; }
+.al-caps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 22px; }
+.bottomnav:has(.solo-profe:not([hidden])) { grid-template-columns: repeat(5, 1fr); }
+
+@media (max-width: 760px) {
+  .login { padding-top: 0; }
+  .login-card { padding: 18px; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .panel-tools { grid-template-columns: minmax(0, 1fr); }
+  .alumno summary { grid-template-columns: minmax(0, 1fr) 76px 76px; }
+  .al-bar { grid-column: 1 / -1; grid-row: 2; }
+  .al-caps { grid-template-columns: minmax(0, 1fr); }
+  .bottomnav .btn { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="beam"></div><div class="gridlines"></div><div class="grain"></div>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <div class="topbar-in">
+      <nav class="mainnav" aria-label="Secciones">
+        <a class="btn btn-sm" href="#inicio" data-go="inicio" data-nav="inicio">Inicio</a>
+        <a class="btn btn-sm" href="#capitulos" data-go="capitulos" data-nav="capitulos">Capítulos</a>
+        <a class="btn btn-sm" href="#simulacro" data-go="simulacro" data-nav="simulacro">Simulacro</a>
+        <a class="btn btn-sm" href="#progreso" data-go="progreso" data-nav="progreso">Progreso</a>
+        <a class="btn btn-sm solo-profe" href="#panel" data-go="panel" data-nav="panel" hidden>Panel</a>
+        <button class="btn btn-sm" type="button" data-act="salir">Salir</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main"><div id="view" class="view"></div></main>
+
+  <nav class="bottomnav" aria-label="Secciones">
+    <a class="btn" href="#inicio" data-go="inicio" data-nav="inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5 12 3.5l8.5 7V20h-5.5v-6h-6v6H3.5z"/></svg><span>Inicio</span></a>
+    <a class="btn" href="#capitulos" data-go="capitulos" data-nav="capitulos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg><span>Capítulos</span></a>
+    <a class="btn" href="#simulacro" data-go="simulacro" data-nav="simulacro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l2.5 2.5L16 9"/><rect x="3.5" y="3.5" width="17" height="17" rx="3"/></svg><span>Simulacro</span></a>
+    <a class="btn" href="#progreso" data-go="progreso" data-nav="progreso"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Progreso</span></a>
+    <a class="btn solo-profe" href="#panel" data-go="panel" data-nav="panel" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14.8c1.7.8 2.7 2.6 3 5.2"/></svg><span>Panel</span></a>
+  </nav>
+</div>
+
+<button class="btn btn-sm" id="toTop" type="button" hidden>↑ Arriba</button>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<div id="sheet" class="sheet" hidden>
+  <div class="sheet-bg" data-act="cerrar" aria-hidden="true"></div>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <header class="sheet-head">
+      <div class="col" style="gap:4px;min-width:0"><span class="label" id="sheetNum"></span><h2 class="h2" id="sheetTitle"></h2></div>
+      <button class="btn btn-sm sheet-x" id="sheetClose" type="button" data-act="cerrar" aria-label="Cerrar">✕</button>
+    </header>
+    <div class="sheet-body" id="sheetBody" tabindex="0"></div>
+    <footer class="sheet-foot">
+      <button class="btn btn-sm" id="sheetPrev" type="button" data-act="anterior" aria-label="Subtítulo anterior">← Anterior</button>
+      <div class="col" style="gap:4px;align-items:center"><button class="btn" id="sheetRead" type="button" data-act="leido" aria-pressed="false">Marcar como leído</button><span class="muted small" id="sheetPos"></span></div>
+      <button class="btn btn-sm" id="sheetNext" type="button" data-act="proximo" aria-label="Subtítulo siguiente">Siguiente →</button>
+    </footer>
+  </div>
+</div>
+<script>
+/* Contenido de los 7 capítulos.
+   Marcado del texto: línea normal = párrafo, "- " = viñeta, "1. " = lista numerada, **negrita**, *cursiva* */
+const CAPS = [
+{
+  n: 1, title: 'Resumen bíblico de los requisitos morales de los líderes espirituales', ring: 'Biblia', frase: 'El centro. La regla con la que se mide todo lo demás.',
+  resumen: {
+    idea: 'La Biblia es la base de las normas éticas del ministro. En cada época, desde los patriarcas hasta el Apocalipsis, Dios pidió a sus líderes una vida moral alta.',
+    puntos: [
+      'El ministro debe haber nacido de nuevo, tener sed por las almas y mantener una vida devocional constante.',
+      'Los patriarcas no fueron perfectos, pero se arrepentían y guiaban a su familia de vuelta a Dios.',
+      'Moisés llevaba sus cargas a Dios y fue fiel a pesar de la oposición de su pueblo.',
+      'Los sacerdotes tenían normas de vestido, familia, sobriedad y matrimonio que enseñan respeto y buen testimonio.',
+      'Los profetas eran la conciencia moral del pueblo y debían vivir lo que predicaban.',
+      'Para Jesús, la cualidad clave del líder es el amor a Dios y al prójimo.',
+      'Pablo resume los requisitos de los pastores en 1 Timoteo 3:1-7 y Tito 1:5-9.',
+      'Hebreos 13:7 enseña que la conducta del pastor respalda su mensaje.'
+    ],
+    recuerda: 'Este capítulo es el centro del libro. Los demás capítulos aplican estos requisitos a cada relación del ministro.'
+  },
+  subs: [
+    { id: 'Intro', t: 'Introducción', b: `Cuando pensamos en normas éticas para ministros, lo natural es empezar por lo que enseña la Biblia. Al estudiarla con atención al papel de los líderes religiosos, impresionan las cualidades éticas y morales que se esperaban de ellos.
+El capítulo sigue este orden. Primero presenta lo que se espera del ministro desde el punto de vista bíblico. Luego hace un recorrido por los líderes del pueblo de Israel: los patriarcas, Moisés, los sacerdotes y los profetas. Después pasa al Nuevo Testamento: el criterio de Jesús al escoger a los doce y los requisitos para los discípulos, los apóstoles y los misioneros.
+Estas enseñanzas dan la base para establecer los criterios de los ministros de hoy, y además inspiran a luchar por ponerlos en práctica.` },
+    { id: '1.1', t: '¿Qué se espera del ministro de Dios?', b: `El ministro de Dios tiene que ser una persona con una experiencia religiosa muy profunda, que abarca el **nuevo nacimiento** y un **caminar constante con Dios**. Tiene que haber conocido a Dios en forma personal.
+No se pueden fijar pautas para esa experiencia, porque Dios se revela a cada uno de forma distinta:
+- Abram caminaba bajo las estrellas cuando Dios le habló.
+- Moisés apacentaba ovejas en el desierto y Dios le habló desde la zarza ardiente.
+- Jacob huía de su casa después de pelear con su hermano, y Dios le habló en un sueño.
+- Pablo iba a perseguir a los cristianos cuando la luz del cielo lo detuvo.
+Las circunstancias cambian, pero quien de verdad se ha convertido no puede negar que escuchó la voz de Dios.
+**Sed por las almas.** El ministro anhela que otros vivan la misma experiencia y se sacrifica por ello, como Andrés, que corrió a contarle a su hermano Pedro que había encontrado a Jesús. Lo lamentable es que muchos pierden el celo evangelizador después de los primeros meses o años de su conversión.
+**Una vida devocional activa.** Sin ella no hay eficacia en el ministerio. Muchas veces quien debe ser ejemplo no lo es en su comunión con el Señor por medio de la lectura de la Biblia, la meditación y la oración. Los discípulos vieron que Cristo se levantaba muy de mañana para orar a solas (Mr 1:35, Lc 6:12).
+El ministro debe ser persistente y mantener su vida devocional a todo costo. Le ayudan los libros devocionales, las biografías de grandes personajes y los programas de desarrollo espiritual.` },
+    { id: '1.2', t: 'El ejemplo de los patriarcas', b: `Los primeros líderes del pueblo de Dios tenían responsabilidades cívicas, sociales y religiosas a la vez. Noé y Abraham se sentían responsables por su familia inmediata y por la familia extendida. Isaac y Jacob guiaban a toda la comunidad según las normas que Dios les había revelado.
+Aun antes de los Diez Mandamientos, estos patriarcas exigían respeto por la propiedad, protegían el matrimonio y respetaban la vida humana.
+La Biblia muestra su vida tal como era, con sus pecados:
+- **Noé** se emborrachó, y eso se vio como pecado (Gn 9:21). Al despertar pronunció una maldición sobre Canaán, hijo de Cam.
+- **Abraham** salió de Harán obedeciendo el llamado de Dios y fue líder espiritual y político. Pecó al decir en Egipto que Sara era su hermana, por miedo a perder la vida, pero se arrepintió. Mostró su dedicación al dar los diezmos a Melquisedec (Gn 14:17-24), y su fe fue probada con el mandato de sacrificar a su hijo (Gn 22).
+- **Jacob** engañó a su hermano Esaú y a su suegro, pero era sensible a la voz de Dios. Hizo un voto de consagración (Gn 28:20-22), y cuando sus hijos tuvieron problemas morales llamó a toda su familia a volver a Dios (Gn 35:2).
+**La lección:** el líder de la familia y de la tribu temía a Dios y se hacía responsable del desarrollo moral y espiritual de todos los que tenía a su cargo.` },
+    { id: '1.3', t: 'Moisés', b: `Moisés fue libertador, legislador y representante espiritual de Dios ante el pueblo. Su vida inspira a todo ministro, porque obró sintiendo que Dios lo había llamado. Nunca se apartó de aquella llama de la zarza ardiente por medio de la cual Dios lo envió a Egipto a liberar a los esclavos (Éx 3:2-10).
+Su experiencia más dramática fue ser el **mediador** por medio del cual Dios entregó los Diez Mandamientos. Al bajar del monte Sinaí encontró al pueblo danzando alrededor de un becerro de oro (Éx 32). Dios llamó al pueblo al arrepentimiento, y Moisés actuó como mediador entre el pueblo y Dios.
+En los años del desierto vivió pruebas y hasta depresión, pero siempre llevó sus cargas a Dios, y Dios lo levantaba para seguir adelante.
+**Una cualidad clave para el ministro:** ser una persona que lleva sus cargas a Dios y confía en el poder del Dios que lo llamó. Moisés fue fiel a pesar de los sufrimientos y de la oposición de su propio pueblo.` },
+    { id: '1.4', t: 'Los sacerdotes', b: `Los sacerdotes eran los líderes que mediaban entre el pueblo y Dios en los sacrificios. Dios les dio requisitos de mucho significado:
+- **Su vestido.** Llevaban los nombres de las tribus de Israel en el pectoral, sobre el corazón, como memorial delante de Jehová (Éx 28).
+- **Su familia.** Los hijos de Aarón participaron en su consagración (Éx 29), y la conducta de los hijos afectaba la honra del sacerdote (Lv 21:9).
+- **Su sostenimiento.** Comían de lo que se ofrecía en la expiación (Éx 29:33).
+- **Su sobriedad.** No debían beber vino ni sidra al entrar al tabernáculo, para poder distinguir entre lo santo y lo profano (Lv 10:9-10).
+- **Su matrimonio.** No podían casarse con una ramera ni con una mujer repudiada (Lv 21:7).
+- **Su cuerpo.** Debían estar sin defecto físico para acercarse al altar (Lv 21:18-20).
+**Principios para hoy.** Aunque no se exijan de forma legalista, estas normas enseñan que el ministro es un líder espiritual que debe merecer el respeto de la comunidad. No debe tener nada que cause falta de respeto hacia su oficio. Su presentación personal es importante, y su familia también participa de su llamado.` },
+    { id: '1.5', t: 'Los profetas', b: `Ya en tiempos de Samuel había grupos de profetas que destacaban los valores morales de la nación (1 S 10:10-11). Los profetas eran la **conciencia moral del pueblo**:
+- Natán fue enviado a declarar a David su pecado (2 S 12).
+- Elías denunció a Acab cuando quiso quitarle la viña a Nabot (1 R 21).
+Los profetas condenaban la injusticia económica, la opresión de los pobres, la mentira, el engaño y la corrupción personal y social. Eso significa que ellos mismos tenían que ser ejemplo de las virtudes contrarias.
+Algunos profetas aconsejaban a reyes y príncipes. Eso deja una pregunta para hoy: ¿cómo puede el ministro ser consejero de los gobernantes sin meterse en la política?
+También había **falsos profetas**, que hablaban para manipular al pueblo en vez de comunicar el mensaje de Dios. «Así ha dicho Jehová acerca de los profetas que hacen errar a mi pueblo, y claman: Paz, cuando tienen algo que comer» (Mi 3:5).
+El profeta verdadero clamaba por una vida moral que respaldara al mensajero de Dios. Ese es el mismo ideal para el ministro de hoy.` },
+    { id: '1.6', t: 'Las enseñanzas de Jesús', b: `Los Evangelios muestran tanto las cualidades que deben tener los líderes religiosos como las que no deben tener.
+No hay un pasaje que diga qué criterio usó Jesús para escoger a los doce. En su sabiduría divina veía lo que había en el corazón y el potencial de cada uno.
+Jesús los llamó a una vida diferente:
+- A dejar su trabajo para dedicarse al discipulado.
+- A dejar a sus familias, al menos por temporadas, para acompañarlo por Palestina.
+- A tomar la cruz y embarcarse en una misión espiritual.
+Jesús observaba el progreso de cada discípulo. **Judas** no pasó las pruebas finales porque era ladrón de corazón (Jn 12:6). Los demás tuvieron que luchar con el egoísmo, que provocaba disputas entre ellos (Mt 20:23-28).
+El **Sermón del monte** presenta las normas éticas más altas de todos los maestros de la historia, y el ministro tiene el desafío de seguirlas.
+Jesús resumió la Ley, los profetas y sus propias enseñanzas en un mandamiento: amar a Dios y amar al prójimo como a uno mismo (Mt 22:37-40). **El amor es la cualidad que garantiza cada día el éxito del ministro.**` },
+    { id: '1.7', t: 'Los Hechos de los Apóstoles', b: `La iglesia naciente tenía líderes cuyas cualidades morales y espirituales despertaban el respeto de los creyentes.
+Cuando la iglesia creció, hubo que buscar personas para servir como diáconos. Debían ser **«de buen testimonio y llenos del Espíritu Santo»** (Hch 6).
+Bernabé, Felipe, Esteban, Saulo, Timoteo, Tito, Silas, Lidia y Dorcas se destacan como líderes durante la expansión de la iglesia por Asia Menor hasta llegar a Roma.
+La calidad de su vida moral y su consagración fueron la clave del crecimiento numérico y espiritual de la iglesia. El autor anima a recuperar ese celo evangelizador imitando su sinceridad, su dedicación al Señor y su compromiso con Dios.` },
+    { id: '1.8', t: 'Las enseñanzas de Pablo', b: `Pablo enseñó a los jóvenes ministros con su palabra y con su ejemplo. Algunos de sus pasajes son para todos los cristianos, pero otros son especialmente para el ministro.
+La base de su ética pastoral es el **señorío de Cristo** (Gá 2:20). En todas sus cartas se presenta como esclavo y siervo de Jesucristo, que no se pertenece a sí mismo (Ro 14:7-9).
+- **Los fuertes y los débiles.** Los fuertes deben aconsejar a los débiles con misericordia, para restaurarlos a la comunión con Dios y con la iglesia (1 Co 9:19-23).
+- **El sufrimiento.** Pablo sufrió abusos de gente de afuera y de adentro de la iglesia, y tuvo que defender su ministerio (2 Co 10-12).
+- **El fruto del Espíritu.** Amor, gozo, paz, paciencia, benignidad, bondad, fe, mansedumbre y templanza (Gá 5:22-23). Si el ministro lo toma como meta, tendrá madurez espiritual y será fructífero.
+- **El amor.** En 1 Corintios 13 presenta el desafío de amar en las relaciones. Esa cualidad distinguía a las iglesias primitivas y era la clave de su crecimiento.
+- **Los requisitos para pastores.** 1 Timoteo 3:1-7 y Tito 1:5-9 son el resumen más completo de normas éticas para ministros que hay en la Biblia. Los jóvenes ministros deben estudiarlos a fondo.` },
+    { id: '1.9', t: 'La epístola a los Hebreos', b: `El autor de Hebreos es desconocido, pero conocía bien el papel de los sacerdotes en el judaísmo y había tenido una conversión dramática a Cristo.
+En Hebreos 13:7 dice: **«Acordaos de vuestros pastores, que os hablaron la palabra de Dios. Considerad cuál haya sido el resultado de su conducta, e imitad su fe.»**
+Este versículo afirma la importancia del testimonio del pastor por medio de su conducta.
+Algunas personas se impresionan al escuchar el evangelio en un autobús, en una tienda o en un parque. Otras observan durante meses la conducta del pastor antes de considerar su mensaje. Tal vez el comerciante de la esquina mira si el pastor paga el pan y la leche para decidir si su mensaje vale algo.
+**La moral del ministro respalda su mensaje.**` },
+    { id: '1.10', t: 'Las epístolas de 1 y 2 de Pedro', b: `Pedro llama a los cristianos a dar buen testimonio en medio de las tribulaciones. Motiva a los líderes a seguir la voluntad de Dios, porque fueron llamados según ella (1 P 1:14-16).
+- **Urgencia.** Anima a ejercer el ministerio sabiendo que el tiempo es corto (1 P 4:7, 2 P 3:11-14). Nadie sabe el día ni la hora de la venida de Cristo.
+- **Buenos administradores de la gracia de Dios** (1 P 4:10). Los cristianos no corren con los inconversos en el mismo desenfreno.
+- **Sobriedad y oración.** Los ministros deben ser sobrios y velar en oración (1 P 4:7).
+- **Tres funciones del ministro.** Pedro menciona la administración, la predicación y el servicio (1 P 4:10-11). Estas tres actividades abarcan las funciones principales del ministro.` },
+    { id: '1.11', t: 'Las epístolas de Juan', b: `A Juan le tocó escribir en una época de mucha oposición al cristianismo. Había falsos maestros, los «anticristos», que seguían doctrinas gnósticas.
+El maestro verdadero **anda en la luz y habla la verdad** (1 Jn 1:6, 2:4-6). Juan destaca el amor, la fe y la fidelidad a la verdad como las virtudes que hacen vencer al cristiano.
+Sus cartas llaman a los ministros a servir aun en medio de la oposición y a tener discernimiento para distinguir entre la verdad y el error.
+«Mirad por vosotros mismos, para que no perdáis el fruto de vuestro trabajo, sino que recibáis galardón completo» (2 Jn 8).` },
+    { id: '1.12', t: 'El Apocalipsis de Juan', b: `El Apocalipsis fue escrito a los **«ángeles» de las siete iglesias** de Asia Menor, y se entiende que eran los pastores de esas iglesias. Es un tipo de literatura que consuela a quienes sufren bajo un gobierno pagano y hostil al cristianismo.
+Esos pastores sufrieron mucho por su fidelidad en medio de la persecución. Hoy hay lugares donde los ministros pasan por el mismo crisol, y quienes viven en libertad a veces olvidan a los que están en la cárcel por predicar.
+La persecución separa a los sinceros de los que sirven por otros motivos. A veces viene de los enemigos del evangelio y a veces de los mismos cristianos.
+Cuando toca sufrir por la fe, se ve si el compromiso va más allá de los tiempos fáciles. Ahí se manifiestan la sinceridad y la fidelidad del ministro.` },
+    { id: 'Conclusión', t: 'Conclusión', b: `En cada época de la historia bíblica, la revelación divina resalta los altos requisitos para los siervos del Señor. En una clase, un seminarista sacó veintiocho principios bíblicos para ministros y otro sacó veinte.
+El libro sigue un orden: primero la persona del ministro y su ética personal, luego su familia, después la iglesia local, la denominación y, por último, las relaciones fuera de su denominación.` }
+  ]
+},
+{
+  n: 2, title: 'La ética personal del ministro', ring: 'Persona', frase: 'El ministro consigo mismo: su llamado, su salud y su integridad.',
+  resumen: {
+    idea: 'El ministro debe cuidarse a sí mismo antes de servir a otros. Esto incluye estar seguro de su llamado, cuidar su salud completa y vivir con integridad moral y económica.',
+    puntos: [
+      'El llamado de Dios da firmeza. Puede llegar como deseo de servir, como convicción o como una voz.',
+      'Hay que examinar los motivos ocultos del llamado y purificarlos, sin abandonar el ministerio.',
+      'Bratcher describe el síndrome de «caminar sobre el agua», la necesidad de parecer perfecto.',
+      'Salud emocional: equilibrio y dominio propio (2 Ti 1:7).',
+      'Salud física: ejercicio, descanso, examen médico y vacaciones.',
+      'Salud intelectual: de 3 a 4 horas diarias de estudio.',
+      'Salud espiritual: un tiempo diario personal con Dios, como Jesús.',
+      'Ser irreprensible: dominio propio y medidas para prevenir caídas morales.',
+      'No servir por dinero, aunque la iglesia debe pagar un sueldo digno.'
+    ],
+    recuerda: 'Si el ministro no está bien, su familia y su iglesia también sufren.'
+  },
+  subs: [
+    { id: 'Intro', t: 'Introducción', b: `El capítulo 1 mostró que la Biblia es la base de autoridad para las normas éticas del ministro. Sus enseñanzas llegan a veces como mandamientos y otras veces como ejemplos de personas que nos guían hoy.
+El ministro siempre toma decisiones que lo afectan a él, a su familia, a la iglesia, a la comunidad y al mundo. Ser ministro hoy exige lo mejor que uno puede ofrecer a Dios y al prójimo.` },
+    { id: '2.1', t: 'El llamado de Dios al ministro', b: `En algunas denominaciones elegir el ministerio es una decisión racional. En muchas otras se insiste en que el ministro debe tener la **convicción firme de que Dios lo llamó**, porque esa convicción lo sostiene en las dificultades y le da permanencia.
+Se espera una experiencia como la de Pablo y Bernabé: «Apartadme a Bernabé y a Saulo para la obra a que los he llamado» (Hch 13:2).
+Unos sienten el llamado como un deseo profundo de servir al Señor. Otros lo resisten mucho tiempo antes de rendirse.
+**El testimonio del autor.** De joven admiraba la consagración de su pastor y deseó dedicarse a predicar. En la universidad escuchó a veteranos de guerra y a adultos que habían resistido el llamado por años, y empezó a dudar del suyo porque no lo había resistido. Esa ansiedad afectó su vida devocional, hasta que un profesor sabio le explicó que muchos son llamados por medio del deseo de servir, como Isaías, que se ofreció voluntariamente. Eso le dio paz para seguir preparándose.` },
+    { id: '2.1.1', t: 'Los componentes del llamado de Dios', b: `El doctor Jorge Gaspar Landero escribió que el pastor es hombre de Dios por llamamiento divino, que vive para su iglesia y sufre por ella. A. T. Bequer afirma que es imposible pastorear sin haber sentido el llamamiento de lo alto, porque la misión del pastor tiene muchas facetas.
+El llamado puede llegar de varias formas:
+- Como una voz audible, igual que a muchos personajes bíblicos.
+- Como una convicción interna que persiste durante mucho tiempo.
+- Al considerar las necesidades del mundo de hoy.
+No se le puede dictar a Dios cómo llamar, porque Él es soberano. Pero cada uno debe escuchar su voz y responder con convicción.
+H. C. Brown decía que el pastor que tiene paz sobre su llamamiento sabe que Dios lo llamó. Debe arder por dentro la llama de la que habló Pablo: **«¡Ay de mí si no anunciare el evangelio!»** (1 Co 9:16). Hay un elemento divino en el llamado.` },
+    { id: '2.1.2', t: 'Los elementos inconscientes en el llamado', b: `José María Martínez aconseja examinar con la mayor objetividad posible los motivos que lo llevan a uno al ministerio. La sicología enseña que actuamos por motivos conscientes e inconscientes.
+**Motivos que algunos descubren con el tiempo:**
+- La necesidad de ser aceptados por los demás.
+- El deseo de ser estrellas o actores.
+- Expiar la culpa por un pecado del pasado.
+- La presión de los padres o familiares, lo que Freud llamó el «super yo».
+- El poder y el prestigio sobre otras personas.
+- Huir de la soledad. Paradójicamente, el aislamiento es uno de los mayores problemas de los ministros, que muchas veces llevan una máscara que los separa de la congregación.
+**El síndrome de «caminar sobre el agua».** Edward Bratcher dice que muchos ministros sienten la necesidad de aparentar que pueden resolverlo todo, hacer milagros, ser los mejores oradores y ser infalibles en doctrina. Eso produce tres actitudes dañinas:
+1. Sentimientos de debilidad y poca estima propia.
+2. La sensación de no estar a la altura de las demandas de todos.
+3. La necesidad de llevar una máscara profesional que esconde las emociones verdaderas.
+**¿Qué hacer?** No abandonar el ministerio. J. B. Phillips aconseja pulir los motivos para hacerlos menos egoístas. Cuanto más saquemos a la luz esos motivos y los manejemos de forma consciente, más efectivos seremos en el ministerio.` },
+    { id: '2.2', t: 'La salud del ministro', b: `El ministro tiene el deber, hacia sí mismo, hacia Dios y hacia su familia, de mantenerse en el mejor estado de salud posible. Cuando pierde su salud física, emocional o espiritual, disminuye su eficacia.
+Por eso la ética personal incluye cuidarse en cuatro áreas: la emocional, la física, la intelectual y la espiritual.` },
+    { id: '2.2.1', t: 'La salud emocional', b: `Después de unos años, el pastor puede descubrir que sufre un estrés acumulado. Unos esperan que sea gran orador, otros que administre como una empresa moderna, otros que visite más o que esté siempre disponible para aconsejar. Además, su familia le reclama que dedica todo su tiempo a los miembros. Todo eso puede llevarlo a una crisis.
+En un solo día puede oficiar un funeral, visitar en el hospital a unos padres felices por un nacimiento y a alguien que está muriendo, y terminar en una boda. Necesita identificarse con cada persona sin perder su propio equilibrio. Pablo lo dice así: **«No nos ha dado Dios espíritu de cobardía, sino de poder, de amor y de dominio propio»** (2 Ti 1:7).
+Wayne Clark señala como problemas comunes el resentimiento, la inmadurez, el sentido de inferioridad, las dudas, la culpa y la soberbia. El fruto del Espíritu (Gá 5:22-23) ayuda a combatir la inseguridad, la culpa y la necesidad de atacar a otros.
+**Señales de falta de salud emocional:**
+- Sacrificar a la esposa y a los hijos creyendo que es consagración, cuando en realidad se está cubriendo una inseguridad.
+- Sentir que tiene que ganar toda controversia en la iglesia, con actitud de dictador.
+- Trabajar largas horas los siete días de la semana por una compulsión.
+- Querer cambiar de iglesia cada dos o tres años, buscando siempre algo más grande, como quien escala montañas sin descansar nunca.
+La salud emocional incluye saberse aceptado por Dios y por los demás. Tomás Harris lo expresa en su libro *Yo estoy bien, tú estás bien*. Wayne Oates también cuenta su lucha contra la inferioridad y el aislamiento.` },
+    { id: '2.2.2', t: 'La salud física', b: `La salud física está muy ligada a la emocional. El ministro necesita dormir lo suficiente, comer sano y hacer ejercicio cada día, porque pasa mucho tiempo sentado preparando sermones y estudios.
+- **El peso.** Después de los 35 años muchos ministros aumentan de peso por falta de ejercicio y exceso de comida. La **glotonería** es uno de los pecados más comunes entre ministros, porque los miembros siempre los invitan a comer.
+- **El ejercicio.** Los médicos recomiendan acelerar el corazón de forma sostenida veinte minutos al día. No hace falta un programa agotador, basta un ejercicio suave y vigilar lo que se come.
+- **El examen médico.** Cada dos años antes de los 50 años, y cada año después.
+- **El estrés.** Brooks Faulkner escribió *Burnout in Ministry* sobre el agotamiento de los ministros. Cada uno debe encontrar su forma de relajarse y practicarla con regularidad.
+- **La recreación y la familia.** Es bueno apartar un día para estar con la familia.
+- **Las vacaciones.** Cada año. La iglesia debe animar al pastor a tomarlas. Puede aprovechar para leer, planear su predicación y visitar otras iglesias.
+- **Saber decir que no.** Wayne Oates advierte contra aceptar todas las invitaciones a predicar o dar conferencias. Muchos ministros descubren a los 45 años que lograron la fama, pero perdieron el amor y el respeto de su esposa y de sus hijos.` },
+    { id: '2.2.3', t: 'La salud intelectual', b: `El pastor alimenta intelectualmente a su congregación dos o tres veces por semana. Para hacerlo bien necesita **de tres a cuatro horas diarias** de preparación. Muchas personas dejan de asistir a la iglesia porque no reciben estímulo intelectual.
+- Debe estudiar toda la vida y leer de forma variada, usando lo que lee como ilustraciones.
+- No se espera que sea especialista en todo, pero sí que esté informado de lo que pasa en el mundo. Su predicación muestra si está estudiando o si repite ideas viejas.
+- La gente busca algo nuevo, como los filósofos que escuchaban a Pablo en Atenas (Hch 17:18).
+- Cada uno decide su mejor horario y lugar para estudiar, en casa o en el templo, de mañana o de noche. Lo indiscutible es que debe dedicarle tiempo.
+- Debe actualizarse en doctrina, teología y filosofía. Pablo le dijo a Timoteo: «Ocúpate en la lectura, la exhortación y la enseñanza» (1 Ti 4:13).
+- Puede tomar cursos en seminarios o universidades, usar las bibliotecas y leer un libro nuevo cada mes.` },
+    { id: '2.2.4', t: 'La salud espiritual', b: `Es paradójico que quien inspira a tantos a orar descuide su propia vida devocional. Encuestas en seminarios muestran que muchos necesitan apartar un tiempo diario para leer la Biblia y hablar con Dios para su propio beneficio.
+Algunos ministros piensan que, como pasan el día orando por otros y preparando mensajes, no necesitan un tiempo propio con Dios. **Es un error de lógica.** Quien medita cada día en la Palabra para sí mismo ministra con más eficacia y autoridad.
+La predicación sin oración produce congregaciones muertas. La falta de salud espiritual es una de las razones por las que algunos ministros abandonan el ministerio.
+**Jesús es el ejemplo.** Se apartaba a orar al monte de los Olivos, «como solía» (Lc 22:39-40).
+Además de la Biblia y la oración, cada uno puede buscar lo que le ayude: leer sermones de predicadores respetados, escuchar predicaciones por radio, la música sagrada, o libros como los de James D. Crane sobre la oración y *Spiritual Direction* de Martin Thornton.` },
+    { id: '2.3', t: 'Una ética de compromiso', b: `Los ministros no solo deben saber dirigir la iglesia. También deben ser personas de carácter elevado, con cualidades que muestren un desafío real a seguir a Cristo.` },
+    { id: '2.3.1', t: 'Una ética irreprensible', b: `Entre los requisitos que Pablo da para los pastores en 1 Timoteo 3 aparece la palabra **«irreprensible»**. Es la norma ética más alta para la vida personal y pública del ministro.
+- **Templanza.** Dominar los deseos carnales. El testimonio de la iglesia sufre cuando el ministro cae en el alcohol, el tabaco, las drogas o cualquier otro vicio. La gente no tiene paciencia con el ministro que es descubierto en ellos.
+- **Los impulsos sexuales.** El matrimonio es la forma sana de expresar el amor, incluida la sexualidad. Pero con frecuencia se sabe de pastores que fracasan por una relación fuera del matrimonio, lo que deshonra a Dios, al ministerio y a la comunidad cristiana.
+**Medidas de prevención:**
+- No ofrecerse a llevar a una dama sola en el auto o la moto. Algunos que cayeron dicen que todo empezó con ese gesto de cortesía.
+- En la consejería, tomar precauciones para evitar malentendidos y chismes.
+- No ir a la casa de una señora cuando su esposo no está, a menos que lo acompañe su propia esposa.
+- Si aconseja en el templo, que haya otras personas en el edificio.
+- Si la oficina no tiene ventana, dejar la puerta abierta.
+Ni siquiera Pablo escapó de los ataques de sus enemigos y tuvo que defender su ministerio (1 Co 9:3-5). El ministro debe cuidar cada uno de sus actos.` },
+    { id: '2.3.2', t: 'Una ética económica', b: `El ministro no tendrá éxito si lo mueve el dinero. Casi siempre servirá sin mucha recompensa material, y su mayor recompensa es la satisfacción de ayudar a otros. Jesús prometió que quien deja casa o familia por el reino recibirá mucho más en este tiempo y la vida eterna (Lc 18:29-30).
+La situación económica es uno de los puntos más sensibles. La mayoría de los pastores vive preocupada por necesidades que su sueldo no cubre. Hay meses con más días que dinero.
+Encuestas en varios países muestran que muchos pastores reciben menos del salario mínimo, y mucho menos que otros profesionales con la misma preparación.
+La Biblia dice: **«Digno es el obrero de su salario»** (Mt 10:10, 1 Ti 5:18). Las iglesias deben estudiar el sueldo de su pastor y aumentarlo cada año.` },
+    { id: 'Conclusión', t: 'Conclusión', b: `El ministro es un siervo del Señor dedicado a una misión espiritual. Para cumplirla necesita una autoimagen sana y alegría en su llamado. No será eficaz si sirve con resentimiento por no ganar lo que otros ganan.
+Debe respetarse a sí mismo y cuidar su cuerpo y su salud, porque su eficacia será proporcional a su buena salud. También debe mantenerse alerta intelectualmente para alimentar a los feligreses con un mensaje basado en la Palabra de Dios y que responda a las necesidades del mundo de hoy.` }
+  ]
+},
+{
+  n: 3, title: 'El ministro y su familia', ring: 'Familia', frase: 'Su esposa y sus hijos, el primer lugar donde sirve.',
+  resumen: {
+    idea: 'El hogar es el primer lugar donde el ministro sirve. Una familia feliz respalda su ministerio.',
+    puntos: [
+      'Amar a la esposa como Cristo amó a la iglesia, con tiempo y detalles.',
+      'Tener una cita especial con la esposa cada semana o cada quince días.',
+      'Dar tiempo diario a los hijos y disciplinarlos entre los dos padres.',
+      'La falta de dinero es la mayor causa de estrés en los hogares pastorales.',
+      'La esposa del pastor no puede cumplir todas las expectativas tradicionales de la iglesia.',
+      'Cada pareja elige un modelo de autoridad, jerárquico o democrático, y lo aplica con coherencia.',
+      'La familia pastoral necesita privacidad y una casa cerca del templo, pero no pegada a él.',
+      'El pastor y su esposa no deben discutir sus diferencias en público.'
+    ],
+    recuerda: 'La familia es la carta de presentación del pastor ante la iglesia.'
+  },
+  subs: [
+    { id: 'Intro', t: 'Introducción', b: `La felicidad en el hogar del ministro contribuye mucho a su éxito. Por eso debe dedicar tiempo a su esposa y a sus hijos. Si los descuida mientras atiende a todos los demás, los hijos pueden llegar a resentir que su padre tenga tiempo para otros y no para ellos.
+Las estadísticas muestran que los hijos de ministros se destacan en muchas profesiones. Por eso el pastor y su esposa no deben angustiarse por las privaciones materiales. La aceptación, el calor emocional y el estímulo a tener metas altas compensan la falta de cosas. Los hijos aprenden a apreciar los valores más altos de la vida.` },
+    { id: '3.1', t: 'Deberes del esposo y padre', b: `El esposo tiene la responsabilidad de hacer todo lo posible por la felicidad de su hogar.
+La cultura tradicional dice que él es el sostén económico, pero hoy es aceptable que la esposa trabaje y ayude con los gastos. Eso trae tensiones, porque ella tiene menos tiempo para el hogar, y el esposo debe adaptarse a esas nuevas circunstancias.` },
+    { id: '3.1.1', t: 'Deberes hacia la esposa', b: `Edward Bratcher estudió las fuentes de estrés en la familia del pastor:
+- La iglesia espera que la familia pastoral sea ejemplo de armonía y de prosperidad, aunque el sueldo no alcance.
+- El ministro necesita una familia ejemplar para dar credibilidad a su ministerio, y eso presiona a todos.
+- La congregación impone papeles tradicionales que no dejan a la familia tener su propia identidad. El autor cuenta que no dejó a su hija tomar clases de ballet por miedo al «qué dirán», y su esposa le reclamó después esa decisión.
+- Algunas iglesias esperan que la esposa sea una «pastora asociada» sin sueldo.
+- El descuido del esposo. La esposa de un obispo anglicano dijo que se sentía como viuda porque su esposo nunca estaba en casa.
+- La falta de privacidad, porque la casa pastoral siempre está abierta.
+- El aislamiento, porque aunque estén rodeados de gente, no tienen amigos íntimos en quienes confiar.
+**La respuesta bíblica es amar a la esposa como Cristo amó a la iglesia:**
+1. Con un amor sin condiciones.
+2. Con un amor dispuesto a sacrificarse por ella.
+3. Poniendo primero las necesidades de ella, sin egoísmo.
+4. Con un amor que es más que sexo: felicitarla por la comida, agradecer sus atenciones, recordar su cumpleaños y el aniversario.
+El pastor debe establecer **una cita especial con su esposa una noche por semana o por quincena**. No hace falta gastar mucho dinero. Ella agradecerá el tiempo dedicado solo a ella.` },
+    { id: '3.1.2', t: 'Deberes hacia sus hijos', b: `El pastor debe ser buen ejemplo como padre. Todo niño necesita el tiempo de sus padres, en especial del papá. El padre debe programar un tiempo diario con sus hijos y no llegar tan cansado que no pueda jugar con ellos.
+- Interesarse en lo que estudian y ayudarles de vez en cuando con las tareas.
+- Asistir a las reuniones de padres de familia, porque los hijos captan el mensaje.
+- **Disciplinarlos.** Es responsabilidad de ambos padres, y el papá no debe dejarla toda a la mamá. Por medio de la disciplina los niños aprenden a respetar la autoridad y, de adultos, sabrán ejercerla. Debe ser constante. Los padres que no disciplinan no saben el daño que hacen.` },
+    { id: '3.1.3', t: 'Deberes respecto al sostenimiento del hogar', b: `La iglesia tiene la responsabilidad de pagar al pastor un sueldo digno. En todos los estudios sobre el estrés en los hogares pastorales, **los ingresos inadecuados encabezan la lista**.
+El autor hizo una encuesta entre pastores de América Latina, y casi todos señalaron la estrechez económica como una de sus mayores dificultades.
+Los laicos deben ser buenos mayordomos y sostener dignamente a su pastor. En la familia, todos deben colaborar para economizar cuando hay escasez.
+Si la iglesia no puede pagar lo suficiente, el pastor puede pedir permiso para un empleo adicional, como dar clases unas horas. No es lo ideal, pero a veces es necesario.` },
+    { id: '3.1.4', t: 'Deberes respecto al desarrollo espiritual de cada uno en el hogar', b: `Así como es líder espiritual de la iglesia, el pastor es el líder espiritual de su familia y debe tomar la iniciativa.
+- Tener un culto familiar diario y también momentos a solas con cada hijo.
+- Estar disponible cuando los hijos tienen inquietudes espirituales. Dichoso el pastor que lleva a cada uno de sus hijos a Cristo.
+- Dar atención especial a los adolescentes, que enfrentan tentaciones fuera del hogar y decisiones sobre su vocación.
+La queja más frecuente de la familia es que **el padre no pasa suficiente tiempo con ellos**. Muchas veces tenemos tiempo para los hijos de todos menos para los nuestros.
+**Vacaciones en familia.** Planearlas juntos cada año une a la familia y deja buenos recuerdos.
+**Cuando los hijos ya son adultos** es tiempo de reflexionar y de perdonar. Los hijos perdonan los errores de crianza y los padres perdonan las tribulaciones de esos años. David Seamonds, en *The Healing of Memories*, recomienda confesar a Dios el resentimiento, con la ayuda de un ministro, y orar pidiendo sanidad emocional.` },
+    { id: '3.2', t: 'El lugar de la esposa del pastor', b: `La esposa del pastor puede asegurar el éxito de su esposo en el ministerio o llevarlo al fracaso.
+La joven que se enamora de un futuro pastor debe pensar seriamente si podrá ser feliz en ese papel. Antes de comprometerse debe orar mucho y conversar con otras esposas de pastores.
+Bratcher explica que el pastor, como otros profesionales, debe estar disponible las veinticuatro horas, y la esposa debe entenderlo para no desilusionarse. Agrega que es aún más difícil cuando el esposo entra al ministerio después de tener otra profesión, porque ella debe cambiar de identidad.` },
+    { id: '3.2.1', t: 'El papel de esposa del pastor', b: `Tradicionalmente la esposa del pastor era su «ayudante». Se esperaba que:
+- Mantuviera el hogar en orden, con comida, ropa, aseo y compras.
+- Estuviera en todos los cultos y reuniones de la denominación.
+- Participara en las organizaciones femeniles, la enseñanza de los niños y la música.
+- Apoyara al esposo sin cuestionar nada y le sirviera de secretaria.
+- Fuera un ejemplo sobresaliente de espiritualidad.
+Nadie puede cumplir todo eso, pero muchos en la iglesia lo esperan.
+En los últimos años algunas esposas de pastores rechazaron ese papel. Quieren ser independientes de la profesión del esposo, y algunas trabajan fuera del hogar. Como resultado, la iglesia tiene expectativas más reales. El movimiento de liberación femenina también influyó.
+**La opinión del autor.** Cree que el cristianismo ha tratado mal a las mujeres, aprovechando sus servicios sin dejarlas ocupar los puestos más altos. Ve muchos puestos que pueden ocupar, incluso la presidencia de organizaciones de la denominación, pero todavía no acepta que una mujer sea ordenada como pastora.` },
+    { id: '3.2.2', t: '¿Dominio o sumisión en el matrimonio?', b: `Las enseñanzas de Pablo y Pedro sobre la sumisión de la esposa causan controversia. El pastor y su esposa deben definir sus normas, porque todos en el hogar esperan señales claras sobre la autoridad y la disciplina.
+**Dos formas de ver la autoridad en el hogar:**
+- **Jerarquía de autoridad.** Dios da autoridad a Cristo, Cristo al esposo, el esposo a la esposa y luego a los hijos. Cada uno se sujeta al de arriba. La proponen Bill Gothard y Timoteo LaHaye, con base en Efesios 5 y 6, Colosenses 3 y 4 y 1 Pedro 3.
+- **Relación democrática.** Todos pueden participar en las decisiones después de considerar cada situación, y los hijos también colaboran. La proponen Tomás Gordon y Haim Ginott, que sugieren explicar a los hijos el porqué de las normas, porque el niño que crece con imposiciones sin explicación se frustra y se rebela.
+Cada matrimonio debe decidir qué modelo es mejor para ellos y ser consecuente. Esa unidad trae armonía y evita conflictos. El pastor debe respetar y apoyar siempre a su esposa en la disciplina y en las decisiones del hogar.` },
+    { id: '3.2.3', t: 'Deberes de la esposa del pastor', b: `La Biblia habla de los deberes de las esposas en Efesios 5:22-24, Colosenses 3:18 y 1 Pedro 3:1-7.
+- **La sujeción (Ef 5:22).** Pablo habla desde el siglo primero, cuando la mujer era considerada inferior. En la comunidad cristiana significa que el esposo es responsable del sostén, la dirección, los valores y las metas del hogar, siempre con la participación de la esposa. Por ejemplo, ante un traslado oran y dialogan juntos, pero al final él asume la responsabilidad de la decisión. No significa que sea un dictador que decide todo sin consultar.
+- **El adorno interno (1 P 3:3-4).** No los peinados ostentosos ni los vestidos lujosos, sino un espíritu afable y apacible. El autor cuenta de una esposa criticada por usar zapatos rotos y luego criticada por tener varios pares. El consejo es vestir de forma normal y vivir al nivel promedio de la congregación, ni muy arriba ni muy abajo.
+- **Las virtudes.** Compasión, amabilidad y no devolver mal por mal (1 P 3:8-9).
+- **Apoyar la influencia de su esposo.** Cuidar su apariencia y colaborar para que su ministerio sea un éxito.
+- **Cuidar el matrimonio.** Algunas damas llegan buscando ayuda y desarrollan fantasías con el pastor. Una relación de pareja satisfactoria ayuda a resistir la tentación. Pablo aconseja no negarse el uno al otro (1 Co 7:5).` },
+    { id: '3.3', t: 'Privacidad en la familia pastoral', b: `Una queja común de la familia pastoral es la falta de privacidad. Todos saben todo: los problemas de los hijos en el colegio, cuándo salen de viaje, cuánto gana el pastor y en qué gasta. Si un hijo se porta mal, pronto lo saben los diáconos y toda la iglesia. Esto es una carga pesada para la familia.` },
+    { id: '3.3.1', t: 'La iglesia necesita aceptar la «humanidad» de la familia pastoral', b: `El pastor y su familia son seres humanos con debilidades, y a veces actúan de forma poco cristiana ante una provocación. Si la iglesia les da libertad para vivir con normalidad, aceptando sus limitaciones como las de cualquier otro, les quita un peso muy grande.
+A su vez, la familia debe entender que el pastor es una persona importante en la comunidad y que es normal que sus actividades interesen a los demás. Debe aprender a no molestarse por esa curiosidad.` },
+    { id: '3.3.2', t: 'La iglesia debe permitir que la familia pastoral tenga privacidad', b: `La familia pastoral tiene derecho a guardar algunos secretos. Los padres deben enseñar a los hijos qué temas son solo de la familia.
+- Si la iglesia evita preguntas imprudentes sobre el precio de la ropa o de los muebles, la familia vive con menos presión.
+- Hay información solo para el pastor y su esposa. Por ejemplo, si consideran una invitación a otro lugar, deben orar y hablarlo entre ellos antes de decírselo a los hijos, porque los niños pueden contarlo y suelen oponerse al cambio por sus amigos.
+- Está bien hablar con los hijos de la economía familiar, pero sin cargarlos de preocupación. La niñez debe ser un tiempo de alegría. Con los adolescentes se puede compartir más.` },
+    { id: '3.3.3', t: 'La iglesia debe permitir que la casa pastoral sea un hogar privado', b: `En algunos países la casa pastoral está junto al templo o dentro de él. Entonces la familia sufre interrupciones constantes de personas que llegan a pedir prestada una cinta adhesiva, unas tijeras o cualquier otra cosa. La familia puede adaptarse y hasta alegrarse de colaborar.
+Pero el mejor arreglo es vivir **cerca del templo, sin estar dentro ni pegado a él**. Así la familia llega fácilmente a las actividades y a la vez tiene una vida privada.
+En resumen, la clave es buscar tiempo para estar juntos, jugar, dialogar y enfrentar unidos los problemas. Dichosa la familia pastoral que considera un privilegio servir en la iglesia.` },
+    { id: '3.4', t: 'La intimidad entre el pastor y su esposa', b: `Muchas parejas con problemas miran el matrimonio del pastor como ejemplo. Si ven un matrimonio estable, buscarán ayuda. Si ven conflictos, se desilusionarán.
+Ningún matrimonio es perfecto. La forma en que el pastor y su esposa enfrentan y resuelven sus problemas puede ser el mejor modelo para los demás.
+- **Un pacto.** No discutir sus diferencias personales en público, sino resolverlas en privado.
+- **Las dificultades sexuales.** Algunas personas llegan al matrimonio con ideas equivocadas, inhibiciones o traumas por abuso. Los ministros no están exentos.
+- **Consejos.** El sexo en el matrimonio es normal y bueno, y ambos deben disfrutarlo. No debe ser deber de uno y privilegio del otro. Alivia la tensión, expresa el amor y une a la pareja.
+- **El criterio.** Lo que la pareja hace en privado y da placer a ambos es lícito, con dos condiciones. Si uno no se siente cómodo, deben dejar esa práctica. Si algo trae consecuencias negativas, como una infección, deben suspenderlo.` },
+    { id: 'Conclusión', t: 'Conclusión', b: `El pastor debe ser fiel en dar tiempo a su familia y no descuidarla por atender a la iglesia. La esposa del pastor tiene el papel de colaborar con su esposo para que sean felices en el matrimonio y en el servicio al Señor.
+El autor afirma que los pastores casados y con hijos pueden tener mayor eficacia, porque los feligreses confían más en quien ha vivido experiencias parecidas. Crecer en el hogar de un pastor trae muchas bendiciones a los hijos.` }
+  ]
+},
+{
+  n: 4, title: 'Relaciones éticas con la iglesia local', ring: 'Iglesia', frase: 'La congregación que pastorea, desde que llega hasta que se va.',
+  resumen: {
+    idea: 'Ser pastor no es un empleo cualquiera. Desde que llega hasta que se va, el pastor debe actuar con honestidad, lealtad y servicio.',
+    puntos: [
+      'No ofrecerse a una iglesia. Esperar la invitación y responder pronto.',
+      'Renunciar a la iglesia actual al mismo tiempo que acepta la otra.',
+      'No criticar al pastor anterior ni regresar a hacer bodas o funerales donde ya no es pastor.',
+      'Dejar al sucesor todo en orden y una lista de personas interesadas.',
+      'Predicar con propósito y sin esquivar los temas difíciles.',
+      'Formar líderes, informar a los diáconos y no abandonar la iglesia en una crisis.',
+      'No hacer negocios con los miembros, ni pedirles ni prestarles dinero.',
+      'Visitar con prioridades, empezando por los enfermos, y seguir las normas del hospital.'
+    ],
+    recuerda: 'La relación entre pastor e iglesia es una de las más felices e íntimas que existen.'
+  },
+  subs: [
+    { id: 'Intro', t: 'Introducción', b: `Este capítulo se aplica sobre todo al pastor de una iglesia local, aunque sirve para todo ministro. Ser pastor de una congregación es un gran privilegio. La Biblia usa la imagen del pastor de ovejas para mostrar la actitud del hombre de Dios que cuida las almas.
+El autor recuerda su primer pastorado, en una iglesia rural pequeña, cuando todavía estudiaba en el seminario. Durante dos años viajó unos doscientos kilómetros cada fin de semana. Al llegar visitaba a un diácono para enterarse de las noticias y luego iba a orar con los enfermos.
+Al mirar atrás reconoce que cometió muchos errores, y por eso escribe, para que otros jóvenes los eviten.` },
+    { id: '4.1', t: 'La invitación a ser pastor', b: `El pastorado de una iglesia no es como cualquier otro empleo. Hay pasos éticos que el ministro debe seguir para llegar a ser pastor de una iglesia, y normas para relacionarse con quien estuvo antes y con quien vendrá después.` },
+    { id: '4.1.1', t: 'Cómo lograr una invitación de una iglesia', b: `Muchas iglesias bautistas no quieren una oficina que ayude a los pastores a ubicarse. Bratcher critica que el sistema de recomendaciones de amigos se presta al engaño. Si la denominación tiene un sistema, el pastor puede usarlo y orar para que Dios lo guíe.
+**Normas éticas para recibir una invitación:**
+- **No ofrecerse.** El ministro no debe presentarse ante una congregación para ofrecerse como pastor, igual que los médicos no salen a buscar pacientes.
+- **Avisar y orar.** Debe comunicar a sus amigos y a los líderes de su denominación que está disponible, y orar para que se abra una puerta.
+- **El proceso.** Un pastor o líder presenta su nombre a la iglesia. La **Comisión de Púlpito** lo estudia y ora. Si siente la guía de Dios, lo invita a predicar o a dirigir una campaña. Si Dios está obrando, casi siempre llega la invitación.
+- **Responder pronto.** Debe orar, hablar primero con su esposa y luego con sus hijos, y contestar lo antes posible. No es ético tardar semanas ni aceptar para un tiempo lejano. Debe poder llegar en dos o tres meses.
+- **Renunciar al mismo tiempo.** Si ya es pastor, debe renunciar a su iglesia al mismo tiempo que acepta la otra, para evitar malentendidos y sentimientos heridos.
+- **No usar las invitaciones como presión.** No debe usarlas para que su iglesia le suba el sueldo ni presumir de que otras iglesias lo buscan.
+**Los conflictos y el liderazgo.** Bratcher recomienda que, si hay problemas, los líderes conversen de forma abierta y honesta, siguiendo el consejo de Jesús (Mt 18:15-17). El pastor sabio pide la opinión de la congregación sobre su ministerio. Hay que evitar dos extremos: confiar todo al pastor o dar toda la autoridad a los diáconos. Lo ideal es un **liderazgo compartido**.` },
+    { id: '4.1.2', t: 'Relaciones con el antecesor', b: `Al llegar a una iglesia, el pastor verá cosas que quiere cambiar. A veces el pastor anterior salió bajo presión. Algunos miembros invitarán al nuevo pastor a comer y pasarán el tiempo criticando al anterior.
+- Lo prudente es **cambiar el tema** y, si insisten, explicar con amabilidad que es mejor pensar en el futuro de la iglesia.
+- El antecesor sembró la Palabra en muchos corazones, y el nuevo pastor cosecha ese fruto. Cada pastor edifica sobre la obra de otros, y algún día él también será antecesor.
+- Es normal que unos se entristezcan y otros se alegren cuando un pastor se va. No todos hablarán bien de nosotros: «¡Ay de vosotros, cuando todos los hombres hablen bien de vosotros!» (Lc 6:26).
+- **El antecesor no debe regresar** a hacer bodas, funerales u otros actos, porque la iglesia ya tiene su pastor. Si hay un motivo fuerte, es el pastor actual quien hace la invitación. La excepción es un aniversario u otra celebración especial.` },
+    { id: '4.1.3', t: 'Relaciones hacia el sucesor', b: `También hay normas para el pastor que se va:
+- **Dejar todo en orden.** La lista de miembros, las actas y los informes de finanzas. Si manejó dinero, debe rendir cuentas completas. En algunos casos conviene revisar los libros para que nada afecte su buen nombre.
+- **Dejar una lista de miembros en perspectiva**, con nombres y direcciones de visitantes e interesados. El autor dejó una lista así al irse al campo misionero, y meses después supo que la iglesia había bautizado a muchos de esas tarjetas.
+- **No regresar** a hacer ceremonias, aunque algunas familias se lo pidan. Debe explicarles que formen una relación de confianza con el nuevo pastor y preparar a la congregación para recibirlo.` },
+    { id: '4.2', t: 'Servicio fiel a la iglesia como pastor', b: `Estos consejos abarcan las áreas del ministerio en la iglesia local: la predicación de la Palabra, la visitación a los miembros y a la comunidad, la consejería y la administración general de la iglesia.` },
+    { id: '4.2.1', t: 'El pastor debe proclamar el evangelio con osadía', b: `Una de las mayores necesidades de las iglesias es la predicación con poder. **La predicación pobre produce iglesias pobres** y miembros débiles. Es irónico que el pastor estudie años en el seminario y luego suba al púlpito sin un mensaje de aliento.
+La gente llega preguntando lo mismo que el rey Sedequías a Jeremías: **«¿Hay palabra de Jehová?»** (Jer 37:17).
+- **Predicar con un propósito.** El pastor debe ver las necesidades espirituales de la congregación y planificar su predicación. Puede hacer series sobre las sectas de la zona o sobre las preguntas que la gente se hace. Bill Weber predicó una serie llamada «Respuestas francas a preguntas difíciles», con temas como si se puede confiar en la Biblia, si se puede perder la salvación o dónde está Dios cuando sufrimos.
+- **Predicar libro por libro.** W. O. Vaught, pastor por más de veinticinco años en la misma iglesia, dijo que la mayor bendición de su ministerio fue predicar versículo tras versículo los libros de la Biblia.
+- **No esquivar las controversias.** La gente lee y oye las noticias. Si el pastor da la interpretación cristiana de los problemas actuales, la congregación lo agradece. Cuando salió la película «El Exorcista», dos pastores de Houston predicaron sobre el exorcismo, y unos jóvenes en Chile le pidieron al autor hablar del tema.` },
+    { id: '4.2.2', t: 'El pastor debe ser buen administrador', b: `Una crítica frecuente es que los pastores no administran bien. No forman un equipo y lo hacen todo ellos mismos o con su familia. **Toda iglesia necesita preparar líderes** de forma constante.
+- **Cumplir los compromisos.** Al aceptar una iglesia se acuerdan cosas como la dedicación exclusiva, los domingos fuera, las vacaciones y las reuniones de la denominación. Hay que cumplirlas o negociarlas de nuevo. Si el sueldo no alcanza, puede pedir permiso para un trabajo extra.
+- **Ser buen mayordomo del tiempo.** Los miembros cumplen horarios en su trabajo y no entienden que el pastor pase mucho tiempo fuera de la iglesia.
+- **Informar a los diáconos cada mes.** Cuántas visitas, funerales y bodas hizo. Un pastor descubrió así que hacía trabajo de secretaria, y la iglesia decidió contratar una.
+- **Administrar el programa.** Planificar, organizar, asignar tareas, capacitar a las personas y supervisar. El pastor es la fuente de inspiración.
+- **No abandonar en la crisis.** El pastor es el capitán del barco y debe ser el último en abandonarlo. En terremotos, inundaciones o accidentes, su lugar está con los miembros.
+**Cuidado con el dinero:**
+- No hacer negocios con los miembros. El autor compró un auto usado a un miembro y a los quince días se dañó el cigüeñal. El vendedor no asumió la responsabilidad y dejó de asistir a la iglesia.
+- No arriesgar los ahorros en inversiones que prometen ganancias rápidas.
+- No pedir dinero prestado a los miembros. Si lo necesita, debe acudir a la Comisión de Finanzas o a un banco.
+- No prestar dinero a los miembros, porque si no pueden pagar dejan de asistir por vergüenza. La iglesia debe tener un **fondo de ayuda** para los casos de necesidad.` },
+    { id: '4.2.3', t: 'La visita pastoral', b: `La visitación es una oportunidad de ministrar fuera del púlpito. Como el pastor no puede llegar a todos, debe tener **prioridades**: primero los enfermos en el hospital, luego los enfermos en casa, los que sufren una tragedia, los inconversos que pueden llegar a ser miembros y, por último, los ausentes.
+**Normas para visitar en el hospital:**
+1. Tocar la puerta antes de entrar y esperar que lo inviten.
+2. No preguntar al paciente cuál es su enfermedad.
+3. No criticar al médico ni el tratamiento.
+4. No visitar cuando él mismo está enfermo.
+5. No sentarse en la cama del enfermo.
+6. No llevar comentarios de un cuarto a otro ni comparar casos.
+7. No llevar los problemas de la iglesia al cuarto del enfermo.
+8. No discutir temas de controversia.
+9. No alargar la visita.
+10. Ofrecer una oración si el paciente está abierto a ella.
+11. Si hay familiares, hablar con ellos brevemente, pero dedicarse sobre todo al paciente.
+**Otros consejos:**
+- Planificar la visitación para llegar a todos los miembros durante el año, dando prioridad a los de mayor necesidad e incluyendo a los inconversos.
+- No mostrar preferencia por algunas familias, porque los demás lo notarán.
+- No es obligatorio leer la Biblia y orar en cada hogar. Si hay duda, es mejor preguntar si la familia lo desea.
+- Por medio de las visitas se llega a familiares y vecinos. El autor visitó a una vecina que había perdido a su hijo en un accidente, y varios de esa familia empezaron a asistir a la iglesia.` },
+    { id: 'Conclusión', t: 'Conclusión', b: `La relación entre el pastor y la iglesia es una de las más felices e íntimas que existen. El pastor será amado si demuestra amor.
+Con los años la congregación lo quiere como de su propia familia, recuerda sus cumpleaños y aniversarios y lo acompaña en sus crisis. Dichoso el pastor que encuentra una iglesia donde predicar el evangelio y pastorear en tiempos de alegría y de tristeza.` }
+  ]
+},
+{
+  n: 5, title: 'Normas éticas en relación con la denominación', ring: 'Denominación', frase: 'Su pueblo: la ordenación, la lealtad y los estatutos.',
+  resumen: {
+    idea: 'El ministro debe pertenecer a su denominación por convicción, ser leal a ella y trabajar por los canales establecidos.',
+    puntos: [
+      'Tres preguntas: ¿Quién soy? ¿Cuál es mi evangelio? ¿Quién es mi pueblo?',
+      'Se logra más en colaboración que de forma independiente.',
+      'Defender a la denominación sin ser un títere.',
+      'La ordenación reconoce públicamente a alguien ya probado (1 Ti 4:14).',
+      'Si cambia de doctrina, debe devolver su certificado y renunciar, sin llevarse la iglesia.',
+      'La autoridad se gana con una conducta sana, no con la ordenación.',
+      'Aceptar la decisión de la mayoría y seguir colaborando.',
+      'Conocer los estatutos y usar los canales correctos para proponer cambios.'
+    ],
+    recuerda: 'Aquí la ética personal se vuelve compromiso con todo un grupo de iglesias.'
+  },
+  subs: [
+    { id: 'Intro', t: 'Introducción', b: `Se dice que cada ministro debe responder tres preguntas para ser eficaz en su ministerio:
+1. **¿Quién soy yo?** La respuesta afirma su identidad como hijo de Dios y le da una autoimagen sana.
+2. **¿Cuál es mi evangelio?** La respuesta aclara lo que cree sobre las doctrinas fundamentales de la fe.
+3. **¿Quién es mi pueblo?** La respuesta le ayuda a saber con quién se identifica para colaborar en la obra. Aquí decide su denominación, y si será colaborador u opositor del programa de sus líderes.
+Este capítulo trata de las relaciones éticas con la denominación.` },
+    { id: '5.1', t: 'El pastor debe identificarse con su denominación por convicción', b: `Muchos pertenecen a una denominación porque sus padres los llevaron de niños. Otros llegaron por curiosidad, se convirtieron y se identificaron con ella. Otros nacieron en el catolicismo, estudiaron varias creencias y cambiaron de religión, aunque eso les causó conflictos con su familia.
+**El testimonio del autor.** Sus padres eran bautistas, pero vivían en el campo y casi no iban a la iglesia. A los doce años se mudaron a un pueblo con iglesia bautista. Allí hizo profesión de fe, se bautizó y estudió por años en la escuela dominical y en clases doctrinales. Así llegó a ser **bautista por convicción y no por herencia**.
+**Los ministros independientes.** Algunos son eficaces, pero harían mucho más en colaboración con otros. El aporte de uno solo es pequeño, pero sumado al de muchos se vuelve un gran recurso de energía y de dinero.
+**Lo que exige la convicción:**
+- Defender a su denominación ante ataques injustos.
+- Creer las doctrinas fundamentales y practicar lo que su denominación practica.
+- No ser un títere. Puede influir con su servicio fiel para cambiar lo que crea necesario, y si la denominación se aparta de la Biblia, puede llamarla a volver. Ese es un privilegio del gobierno democrático.
+- Aceptar que nadie está de acuerdo en todo, pero sí en lo de mayor significado, y dar libertad a otros para pensar diferente. No hay que ser legalistas.` },
+    { id: '5.2', t: 'La ordenación para el ministerio', b: `La ordenación es prerrogativa de la iglesia local, pero esta debe buscar la colaboración de las otras iglesias de su denominación, porque el ordenado podrá servir en cualquiera de ellas. Lo ético es que un grupo de pastores examine al candidato y recomiende el culto de ordenación.
+**El debate.** Hoy se discute la ordenación de las mujeres y el significado mismo de ordenar. Franklin Pollard dijo que no encuentra base bíblica para la imposición de manos y que es una herejía católica que Lutero no corrigió.
+**Qué es la ordenación según el libro:**
+- Es reconocer públicamente a alguien **ya probado** en la predicación, la evangelización, el cuidado de las almas y el liderazgo. La iglesia solo debe ordenar a quien llena esos requisitos.
+- Su base es la **«imposición de las manos del presbiterio»** (1 Ti 4:14). Es un acto simbólico que afirma lo que Dios ya hizo en la vida del ministro.
+- Su propósito es bendecirlo y reconocerlo, como la certificación que se exige a los médicos o a los consejeros. Garantiza que sus doctrinas concuerdan con las de su denominación.
+- H. Harvey dijo que los votos de la ordenación se hacen no solo al hombre, sino a Dios.
+**Situaciones éticas:**
+- Si el pastor llega a diferir en doctrinas fundamentales, debe entregar su certificado de ordenación y renunciar. **No es ético sacar a una iglesia de su denominación.**
+- La autoridad no viene de la ordenación, sino de una conducta sana a lo largo de los años.
+- Si el pastor tiene una caída moral, debe renunciar. Si no lo hace, la iglesia puede pedir su renuncia y la iglesia que lo ordenó puede pedir que devuelva su certificado. El autor cita el caso de una iglesia que lo hizo para proteger la moral del ministerio.` },
+    { id: '5.3', t: 'La lealtad a la denominación', b: `El ministro debe pertenecer a su denominación por convicción, no por conveniencia. Por eso la defiende y acata las normas acordadas por la mayoría.
+- **Las diferencias son normales.** Hay diferencias de interpretación y de métodos, como las hubo en tiempos de Pedro y Pablo. En las convenciones se discute, por ejemplo, cómo repartir el dinero para las misiones.
+- **Seguir colaborando.** Cada uno puede expresar su opinión e intentar convencer a otros, pero si su plan no se aprueba, debe mantener la unidad y seguir colaborando.
+- **La raíz del problema es el egoísmo**, que impide trabajar con eficacia. Hay más diferencias sobre cómo hacer la obra que sobre doctrina.
+- **Conocer los estatutos** de la denominación y de la convención, y trabajar por los canales establecidos. No es ético usar medios ilícitos para provocar cambios.
+- **Aceptar la decisión de la mayoría.** Los bautistas usan el proceso democrático. Retirarse del grupo solo se justifica en circunstancias muy críticas.
+- **Aceptar la ayuda** de la denominación, como las campañas simultáneas y los programas de mayordomía y de educación cristiana. No se imponen, se ofrecen para ayudar.
+- **La denominación es el canal** para que el pastor pase de una iglesia a otra, porque las iglesias piden recomendaciones a sus líderes.` },
+    { id: 'Conclusión', t: 'Conclusión', b: `El joven ministro debe identificarse con su denominación, reconocer lo que le aporta y trabajar dentro de sus estructuras.
+Si ve algo que debe cambiar, puede consultar y proponer por los métodos establecidos. Los líderes reciben con gusto las ideas creativas cuando ven que son un aporte positivo para la obra.` }
+  ]
+},
+{
+  n: 6, title: 'Normas éticas en las relaciones interdenominacionales', ring: 'Otras iglesias', frase: 'Respeto y cooperación con los de otras denominaciones.',
+  resumen: {
+    idea: 'El ministro debe respetar a los de otras denominaciones y cooperar con ellos en lo que une, sin perder su identidad ni su fe.',
+    puntos: [
+      'El enemigo común es la incredulidad, no las otras iglesias.',
+      'Respetar la libertad de conciencia y no «robar ovejas».',
+      'Formar un compañerismo de oración con pastores de otras denominaciones.',
+      'Cooperar en campañas unidas, causas sociales, derechos legales y distribución de la Biblia.',
+      'No colaborar en acuerdos de territorios, instituciones educativas compartidas ni en el movimiento ecuménico.',
+      'Con otras religiones, no comprometer la fe ni orar sin el nombre de Jesús.',
+      'El diálogo es útil y puede llevar a conversiones, pero ese no debe ser su fin principal.'
+    ],
+    recuerda: 'Se coopera en lo que une sin perder lo que distingue.'
+  },
+  subs: [
+    { id: 'Intro', t: 'Introducción', b: `En décadas pasadas había polémica, competencia y hostilidad entre pastores de distintas denominaciones. Se hacían debates públicos sobre el bautismo de infantes, la inmersión o la aspersión, la predestinación y la infalibilidad de las Escrituras.
+Hoy se reconoce que, si hay acuerdo en las doctrinas fundamentales, no hay razón para pelear por detalles. **El mayor enemigo es la incredulidad**, que se ve en la indiferencia espiritual, el materialismo y el secularismo.
+El autor, criado en la lealtad bautista, se entrenó en ministerio pastoral en un hospital junto a ministros de otras denominaciones. Al hablar de creencias había grandes diferencias, pero al atender a personas en crisis usaban los mismos pasajes de consuelo. Aprendió que ante el sufrimiento la denominación no es lo decisivo.` },
+    { id: '6.1', t: 'El respeto por las personas de otras denominaciones', b: `El respeto a las personas de otras denominaciones tiene dos partes: respetar su libertad de conciencia y formar una comunidad de fe con sus ministros.` },
+    { id: '6.1.1', t: 'La libertad de conciencia', b: `Una doctrina fundamental de los bautistas es el respeto por las creencias de cada persona y su derecho a creer según su conciencia. Por eso no se debe criticar, menospreciar ni discutir con nadie por sus creencias.
+- Hay que respetar a pentecostales, menonitas, presbiterianos y otros grupos, sin intentar que dejen su iglesia.
+- Ellos tampoco deben tratar de atraer a los que nosotros ganamos. El autor vivió que, después de meses enseñando a unas familias, otros grupos intentaron llevárselas. Algunos usan la doctrina de la plenitud del Espíritu para hacer sentir a los creyentes que les falta algo.
+- En una campaña con el equipo de Billy Graham, los Testigos de Jehová esperaban afuera a los recién convertidos para tomar sus direcciones. El autor considera que eso no es ético.
+- **El ministro no debe parecer que «roba ovejas».** Si su mecánico es de otra iglesia, puede felicitarlo y preguntarle cómo le va, pero no invitarlo a su iglesia, salvo a una actividad de todas las denominaciones.` },
+    { id: '6.1.2', t: 'La comunidad de fe', b: `Los ministros de varias denominaciones pueden formar un compañerismo espiritual de mucha bendición. Tienen intereses comunes y pueden ministrarse unos a otros. A veces un pastor comparte cosas más íntimas con un pastor de otra denominación que con los de la suya.
+- En algunas ciudades se reúnen cada semana o cada quince días para compartir sus experiencias y sus penas, y para orar unos por otros.
+- Así se rompen las barreras de comunicación y de división, y pueden apoyarse cuando una de sus familias tiene problemas.
+- **El propósito debe ser siempre la oración y el compañerismo.** Si se meten actividades de promoción, la reunión pierde su tono espiritual. Los programas se tratan en otra reunión.` },
+    { id: '6.2', t: 'Esferas de cooperación interdenominacional', b: `Hay varias áreas en que las denominaciones pueden cooperar: las campañas de evangelización, los proyectos de interés común, la defensa de los derechos legales y la distribución de la Biblia.` },
+    { id: '6.2.1', t: 'Campañas de evangelización', b: `Se han hecho campañas unidas en que todas las denominaciones colaboran en la preparación. Al final, los nombres de los que hicieron profesión de fe se entregan a **la iglesia evangélica más cercana a su casa**. Así se han ganado muchos creyentes.
+**Ventajas:**
+- Donde se acusa a los evangélicos de estar divididos, muestra una unidad fundamental.
+- Hay más dinero para publicidad, para el coro, para las reuniones y para el seguimiento de los nuevos creyentes.
+- Se puede traer a un evangelista reconocido con su equipo y lograr un mayor impacto.
+- Los coros de todas las iglesias forman un coro unido de mejor calidad.` },
+    { id: '6.2.2', t: 'Proyectos de interés común', b: `Cuando un mal social o moral amenaza la ciudad, todas las iglesias pueden unirse para combatirlo. Las peticiones firmadas por el pueblo evangélico muestran a las autoridades que muchos ciudadanos quieren un cambio.
+**El ejemplo de Colombia.** Hace años había mucha persecución contra los evangélicos. Se formó **CEDEC, la Confederación Evangélica de Colombia**, con personas encargadas de apelar ante las autoridades en cada caso. Informaron al país y al mundo de lo que pasaba, y poco a poco cesaron las persecuciones.
+Las iglesias reportaban casos de niños perseguidos en los colegios y de pastores atacados por grupos fanáticos. Sin una organización unida no habría habido resultados.` },
+    { id: '6.2.3', t: 'Apelación de derechos legales', b: `A veces los grupos evangélicos se unen para pedir a las autoridades la exoneración de ciertos impuestos, porque se reconoce que aportan mucho a la comunidad. Para lograrlo han tenido que contratar abogados y presentarse juntos, lo que tiene más impacto que ir uno por uno.
+En España, hace años, las parejas que no eran católicas esperaban meses y hasta años para poder casarse por lo civil. Son casos de discriminación que no deben existir, y en muchos lugares los evangélicos han tenido que luchar con insistencia por sus derechos.` },
+    { id: '6.2.4', t: 'Campañas de distribución de la Biblia', b: `La Sociedad Bíblica promueve campañas para distribuir la Biblia en hogares, colegios y negocios, y todos los evangélicos tienen interés en participar. Cada iglesia aporta personas que se entrenan para vender Biblias de casa en casa o en puestos en los centros comerciales.
+**Beneficios para cada iglesia:**
+- Los miembros se entrenan para testificar, reciben bendición personal y la iglesia crece.
+- Aprenden más de la Biblia, porque la gente les hace preguntas y deben explicar sus creencias con pasajes bíblicos.` },
+    { id: '6.3', t: 'Esferas de la no colaboración', b: `Hay áreas en que no conviene colaborar con otras denominaciones: los acuerdos de territorios misionales, las instituciones de educación compartidas y el movimiento ecuménico.` },
+    { id: '6.3.1', t: 'Acuerdos de territorios misionales', b: `En el pasado algunos grupos evangélicos acordaron dividir un país y asignar regiones a cada uno.
+**Por qué no conviene:**
+- Cristo mandó predicar el evangelio a toda criatura. Un grupo con recursos y visión no debe ser limitado porque cierta región «le toca» a otro.
+- Si un grupo no tiene fervor evangelizador, otro puede llevar el mensaje.
+- Hacer cumplir esas reglas obliga a algunos a actuar como policías, lo que causa malentendidos y conflictos.
+- Hay casos tristes en que el evangelio se atrasó en un país porque el grupo asignado no evangelizó.
+**La excepción.** Al comenzar obra nueva en una ciudad, si ya hay tres o cuatro iglesias en un sector, es mejor abrir en otro sector donde no haya ninguna.` },
+    { id: '6.3.2', t: 'Instituciones de educación', b: `A veces se propone que varias denominaciones sostengan juntas una institución teológica, con dinero, profesores y administradores. Los bautistas tienden a no participar.
+**Las razones:**
+- Una institución así da un sonido incierto en su teología, porque exige tolerar todas las creencias.
+- Es difícil decidir cuánto debe aportar cada denominación, y con los años vienen los malentendidos.
+- Si un grupo decide separarse, no es claro cómo dividir la inversión.
+**La alternativa:** que cada denominación tenga su propia institución, o que envíe a sus alumnos a otra pagando lo que cuesta. Puede cobrar más a los alumnos de otras denominaciones. Así se evitan los conflictos.` },
+    { id: '6.3.3', t: 'El movimiento ecuménico', b: `Desde la fundación del Concilio Federal de Iglesias, después llamado Concilio Mundial de Iglesias, se ha presionado a los bautistas para unirse. La mayoría no ha querido participar. Justo Anderson escribió la historia de esa relación.
+**Las razones:**
+- El movimiento ha optado por un **evangelio social**, que busca resolver la pobreza, el hambre, la opresión y el analfabetismo, en vez de ir al corazón del problema, que es la necesidad de una experiencia personal con Cristo.
+- El autor menciona casos en que esa organización ayudó a grupos guerrilleros, lo que considera peligroso y contrario a la libertad de conciencia y a la separación entre la iglesia y el Estado.
+**La postura del autor.** El mejor aporte es predicar el evangelio e invitar a las personas a aceptar a Cristo, porque esa transformación impacta todas las áreas de la vida. Los cristianos deben ayudar a resolver los problemas sociales, pero ese no es su enfoque principal. Se puede hacer más con los programas propios que dando dinero a una organización interdenominacional.` },
+    { id: '6.4', t: 'Reuniones con personas de otras religiones', b: `Hoy hay más contacto con personas de otras religiones, como judíos, musulmanes y budistas. Las reuniones de compañerismo e intercambio están bien **si no comprometen nuestras creencias**.
+- **Un ejemplo.** Si a uno lo invitan a orar en una reunión pero le piden no hacerlo en el nombre de Jesús para no ofender a los judíos, el autor cree que no debe aceptar.
+- Con otras religiones hay poco terreno común de fe para planificar programas juntos.
+- Compartir y comparar creencias puede ser útil, pero no si se comunica la idea de que todas las religiones llevan al mismo lugar.` },
+    { id: '6.5', t: 'El diálogo con otros', b: `El autor reconoce que hasta aquí presentó una postura más bien cerrada. Como algunos tienen más inclinación a colaborar, explica qué es el diálogo y cuáles son sus objetivos.` },
+    { id: '6.5.1', t: '¿Qué es el diálogo?', b: `La palabra **diálogo** viene del griego. *Dia* quiere decir «por medio de» o «a través de», y *logos* quiere decir «palabra». Es la comunicación entre dos o más personas por medio de las palabras.
+Se refiere a una reunión formal en la que se explican puntos de vista diferentes para llegar a una comprensión más amplia o a un acuerdo.
+Glenn Ingleheart, de la Convención Bautista del Sur, dice que para que el diálogo dé fruto, los participantes deben representar unidad y diversidad, y venir de distintos lugares, culturas y disciplinas.` },
+    { id: '6.5.2', t: 'Los objetivos del diálogo', b: `Ingleheart propone dialogar para:
+- Participar en la investigación teológica que busca una comunión cristiana mundial.
+- Compartir lo aprendido en el estudio de la Biblia, la historia, la enseñanza, las misiones, la evangelización y la libertad religiosa.
+- Elaborar una teología para nuestra época y compartir los métodos misioneros que funcionan.
+- Aprender a enfrentar el despertar del islam y la ideología marxista.
+**¿Se dialoga para convertir?**
+- Luther Copeland dice que con otras religiones se debe dialogar sin intención de convertir.
+- Ebbie Smith distingue entre el diálogo y el testimonio evangelizador.
+- El autor cree que el diálogo sí puede llevar a la conversión y que no hay que descartarlo como medio, pero que no debe ser la meta principal.
+El autor se reunía con universitarios para dialogar sobre temas religiosos y seculares. Cuando hay respeto y no se busca la polémica, se logra mucho. Ruel Howe dice que los líderes religiosos están tan acostumbrados al monólogo que les cuesta dialogar, porque dialogar exige escuchar y esforzarse por entender al otro.
+Los bautistas tienen fama de cerrados, pero hay mucho que aprender y mucho que aportar en el diálogo.` },
+    { id: 'Conclusión', t: 'Conclusión', b: `La puerta que antes estaba cerrada con candado se está abriendo un poco. Sigue la resistencia al ecumenismo, porque los bautistas prefieren cumplir la Gran Comisión con sus propios recursos, lo que les da más flexibilidad.
+Pero hay disposición a colaborar con otros evangélicos en muchos proyectos y un interés creciente en dialogar con evangélicos, católicos, judíos y otras religiones. Los ministros de América Latina tendrán más oportunidades y deben estar atentos y dispuestos a dar su punto de vista.` }
+  ]
+},
+{
+  n: 7, title: 'Relaciones en la comunidad', ring: 'Comunidad', frase: 'La sociedad: buen ciudadano, voz moral y levadura.',
+  resumen: {
+    idea: 'El ministro es levadura en la sociedad. Debe ser buen ciudadano, voz moral y agente de cambio por medios legítimos y espirituales.',
+    puntos: [
+      'Pagar impuestos, votar informado y obedecer las leyes.',
+      'Su opinión pesa más que la de otros, por eso debe estar bien informado.',
+      'En los actos públicos representa a todos y no promueve su iglesia.',
+      'En un jurado debe guardar las confidencias y ser hombre de misericordia y no de juicio.',
+      'No debe llevar armas, aunque puede servir como capellán.',
+      'Debe denunciar la injusticia y buscar cambios dentro del proceso político.',
+      'Cuatro pasos en un mundo convulsionado: informarse, informar, dialogar y orar.'
+    ],
+    recuerda: 'El último círculo vuelve al centro: la fuerza para actuar en la sociedad viene de la oración.'
+  },
+  subs: [
+    { id: 'Intro', t: 'Introducción', b: `El libro ha ido del centro hacia afuera: el ministro consigo mismo, su familia, la iglesia local, su denominación y las otras denominaciones. Ahora llega a la última relación, la comunidad en general.
+El ministro es llamado a ser **levadura en la sociedad**, como todo cristiano. Eso significa ganar a otros para Cristo por medio de la evangelización personal y de las actividades de la iglesia. También significa influir para que la sociedad se moldee cada vez más según el evangelio, extendiendo el amor, la justicia y la paz.` },
+    { id: '7.1', t: 'Consideraciones generales', b: `El ministro se relacionará con personas que piensan muy distinto. Debe expresar sus convicciones con sinceridad, sin ofender, y ser amable con quienes opinan diferente.` },
+    { id: '7.1.1', t: 'Deberes de ciudadano o residente', b: `El ministro está sujeto a las leyes del país donde es ciudadano, y si vive en otro país como residente, también debe obedecer sus leyes. Debe ser ejemplo como ciudadano cristiano:
+- **Pagar los impuestos** donde es ciudadano y donde reside, si la ley lo exige.
+- **Votar** en las elecciones, informándose de las propuestas de los candidatos y votando según su conciencia.
+- **Obedecer las leyes** y ser ejemplo para los demás.
+**Su opinión tiene más peso.** El ministro es una persona influyente, y muchos adoptan sus opiniones porque confían en su juicio. Es un servidor de la comunidad, como el médico, el juez o el abogado. Por eso los medios lo entrevistan sobre temas como el divorcio, el aborto o la ética médica. Debe estar bien informado y saber expresarse con claridad.` },
+    { id: '7.1.2', t: 'Funciones especiales', b: `A veces invitan al ministro a dar la invocación en una reunión especial, a orar en la dedicación de un edificio o en otro acto oficial. En los países católicos eso lo hace casi siempre el sacerdote, pero a veces le toca al pastor evangélico.
+- **Representa a todo el pueblo**, con sus distintas posiciones espirituales. No debe aprovechar para promover su iglesia ni invitar a sus actividades. Solo invoca la presencia de Dios sobre la comunidad. Los religiosos lo agradecen y los no religiosos se quedan pensando en esos valores.
+- **Capellanías.** En algunos países las sesiones legislativas empiezan con oración y hay capellanes para los legisladores. Es una oportunidad importante que no se debe tomar con indiferencia ni sin preparación. Así como Isaías aconsejó a los reyes, algunos ministros pueden tener esa oportunidad hoy.
+- **Consolar a los líderes.** Los gobernantes pasan momentos de soledad y sufrimiento. Se les pueden enviar cartas de consuelo o de felicitación, y no las olvidan.
+- **Equipos deportivos.** También pueden tener un capellán que atienda su vida espiritual.` },
+    { id: '7.1.3', t: 'Participación en el jurado', b: `En algunos países los ciudadanos forman jurados para decidir si un acusado es culpable o inocente. A veces el ministro está exento, porque se considera que siempre está del lado de la persona necesitada. En otros países debe presentarse si lo citan.
+- El ministro debe **guardar las confidencias** que recibe. Las personas deben sentirse libres de confesarle sus pecados, por eso es mejor que no tenga que testificar a favor ni en contra de un acusado.
+- Es mejor que el ministro sea visto como **un hombre de misericordia y no de juicio**.
+- Las normas cambian según las leyes de cada país. Donde los gobiernos son hostiles a la religión o a los evangélicos, el pastor debe orar y pedir dirección a Dios en cada caso.` },
+    { id: '7.1.4', t: 'Participación en la guerra', b: `La guerra es un problema moral que perturba a todos. En muchos países el ministro reconocido por su denominación está exento del servicio militar, salvo como capellán.
+- Si el ministro quiere ser capellán, no hay nada en contra, y tendrá muchas oportunidades de ministrar a los soldados.
+- Pero el autor cree que **el ministro no debe llevar armas**, porque es contradictorio predicar el valor de la vida humana y a la vez tener que matar.
+- Es un problema serio para los jóvenes llamados al servicio militar obligatorio que sienten el llamado al ministerio. Los líderes de las denominaciones pueden influir para que se respeten sus convicciones y para cambiar esas políticas.` },
+    { id: '7.2', t: 'La intervención en programas de reforma social', b: `Algunos ven al ministro como un reformador social. Sin duda debe predicar todo el evangelio, y eso incluye **condenar las injusticias** sociales, morales y económicas.
+Impresionan los mensajes de Amós, Miqueas, Oseas e Isaías, y las palabras de Jesús contra la opresión de su tiempo. Jesús, citando Isaías 61:1-2, habló de «pregonar libertad a los cautivos, y vista a los ciegos, poner en libertad a los oprimidos, predicar el año agradable del Señor» (Lc 4:18-19).` },
+    { id: '7.2.1', t: 'El alcance de la intervención cristiana', b: `Siempre se ha debatido si la iglesia debe intervenir directamente en la política para lograr reformas. Algunos dicen que hay que luchar por la justicia, incluso con armas y uniéndose a grupos que buscan derrocar al gobierno.
+**La postura del autor:**
+- El ministro debe examinar bien su conciencia antes de identificarse con grupos así.
+- Debe luchar, y animar a otros a luchar, **dentro del proceso político establecido**, buscando leyes que favorezcan a los pobres y oprimidos. Se puede abogar por la justicia y ser buen ciudadano a la vez.
+- Si después de luchar ve que no hay posibilidad de más justicia, tendrá que decidir si toma un camino más radical. Antes debe preguntarse con qué grupo se va a unir y si ese grupo apoya los principios cristianos.
+**El fin y los medios.** Hay presión para que los pastores lleven a los evangélicos a grupos que luchan por la libertad, la paz y la justicia. El fin es bueno, pero hay que mirar los medios. En tiempos de Isaías, Dios no aprobó la alianza con naciones paganas. Si esos movimientos tienen bases ateas y materialistas, unirse a ellos sería **vender la primogenitura por un guisado**. Algunos se aliaron y terminaron presos de sus aliados.` },
+    { id: '7.2.2', t: 'La clase de intervención', b: `El pastor está en un lugar estratégico para guiar a su pueblo por caminos sanos. Necesita equilibrio mental, moral y espiritual para leer las señales de los tiempos y no vender su alma ni la de sus feligreses. Su tarea principal es **predicar el evangelio y dejar que su poder transforme la sociedad**, cambiando los corazones.
+**Situaciones difíciles:**
+- Si grupos extremistas exigen dinero a la iglesia para la revolución o se llevan a los jóvenes para entrenarlos, es momento de **pedir ayuda y protección a las autoridades**.
+- Si se cede ante los grupos que secuestran y presionan a los gobiernos, las consecuencias serán peores.
+- Hay preguntas reales sin solución fácil. ¿Qué decir al miembro pobre que pregunta si puede participar en una invasión de terrenos para tener un techo? ¿Y al trabajador que debe unirse a una huelga o arriesgarse a ser herido o despedido? El autor confiesa que **no hay una solución fácil**.` },
+    { id: '7.2.3', t: 'Recursos espirituales para la intervención', b: `Se puede animar a los cristianos a ejercer su fe y orar de todo corazón pidiendo la ayuda de Dios. Así como Dios respondió a su pueblo en peligros pasados, se puede confiar en que lo socorrerá hoy.
+También se puede ser constante en el trabajo y buen mayordomo de lo poco que se tiene. Dios promete más oportunidades a quien es **fiel en lo poco** (Lc 19:17). Quien trabaja bien, administra bien lo que tiene y aprovecha sus oportunidades progresa, sobre todo si tiene fe en Cristo y es fiel en su vida espiritual.` },
+    { id: '7.3', t: 'El papel del ministro en un mundo convulsionado', b: `Por ser ministro del evangelio, el pastor está en un lugar crítico y estratégico.
+- **Crítico**, porque es peligroso. Cualquier opinión que exprese será criticada por alguien, y apoyar un programa lo aleja de otros.
+- **Estratégico**, porque puede usar su influencia para hacer mucho bien.
+Si está seguro de que Dios lo guía, puede luchar de todo corazón y otros lo seguirán. Para eso debe seguir cuatro pasos:
+1. Informarse bien.
+2. Informar bien a sus feligreses.
+3. Dialogar ampliamente.
+4. Orar diligentemente.` },
+    { id: '7.3.1', t: 'El pastor debe informarse bien', b: `Muchas decisiones se toman sin información suficiente. **Los médicos no operan sin conocer el problema** y los riesgos, pero a veces los pastores entran en una campaña o un proyecto sin saber lo que implica, y cuando ya están dentro se dan cuenta de que no era lo que pensaban.
+Por eso el pastor debe informarse sobre todo proyecto del gobierno o de otras organizaciones que pidan su colaboración. Debe seguir lo que pasa en su país y, sobre todo, en su ciudad y en su barrio, y asegurarse de que participar no comprometa su testimonio.` },
+    { id: '7.3.2', t: 'El pastor debe informar bien a sus feligreses', b: `Al estar bien informado, el pastor puede advertir a sus feligreses de los peligros y de las necesidades que traen los movimientos nacionales e internacionales. Muchos agradecen una perspectiva cristiana. Hay médicos que felicitan a su pastor por defender la santidad de la vida en el debate sobre el aborto.
+**Informarse no basta.** Hay que meditar con calma, considerar las alternativas y sus consecuencias, unir la información con la fe y tomar en cuenta los valores morales que están en juego.
+**El ejemplo del avión secuestrado.** Cuando uno no tiene que decidir, opina con facilidad sobre qué hacer con los rehenes. Pero quien debe ordenar un rescate, sabiendo que pueden morir, piensa mucho antes de actuar. Es fácil hablar con valentía cuando no nos toca decidir. La responsabilidad nos hace más serios y pacientes.` },
+    { id: '7.3.3', t: 'El pastor debe dialogar ampliamente', b: `Cuanto más grave es la decisión, más necesita el pastor el consejo de otros. Es importante tener cristianos con quienes dialogar para recibir información y sugerencias. El diálogo amplía el conocimiento y da más seguridad al decidir.
+Los Proverbios lo enseñan: **«Donde no hay dirección sabia, caerá el pueblo, mas en la multitud de consejeros hay seguridad»** (Pr 11:14).
+Los jueces antiguos escuchaban a los testigos antes de decidir, y los líderes políticos de hoy tienen consejeros especialistas. El pastor también necesita consejeros en lo espiritual.` },
+    { id: '7.3.4', t: 'El pastor debe orar diligentemente', b: `Muchas veces tenemos la tentación de confiar en la protección humana o política, cuando tenemos en Dios un recurso mucho más poderoso. La Biblia muestra cómo Dios intervino para cambiar la historia.
+**El ejemplo de Ezequías.** El ejército de Senaquerib, rey de Asiria, estaba listo para invadir Judá y todos tenían miedo. El rey Ezequías acudió al profeta Isaías, que le dijo que confiara en Dios. «Y salió el ángel de Jehová y mató a ciento ochenta y cinco mil en el campamento de los asirios» (Is 37:36).
+Se dice que cuando al hombre se le acaban los recursos, Dios comienza a actuar. Pero es mejor confiar en Dios **mientras uno hace todo lo posible** por resolver los problemas.
+Es tiempo de ser optimistas. Dios no nos ha abandonado y tiene el control del universo. Debemos entregarnos a Él como barro en las manos del Alfarero, para que nos haga un vaso útil para su servicio.` },
+    { id: 'Conclusión', t: 'Conclusión', b: `El mayor desafío del ministro de hoy es **relacionarse con las personas de afuera de la iglesia**, porque son las que se deben ganar para Cristo. Debe relacionarse bien en las áreas política, económica y social para comunicarles el amor de Dios.
+El ministro que se separa de los inconversos se aísla. El que se identifica con ellos para comunicarles el evangelio enfrenta un gran desafío. En su vida normal como ciudadano encontrará oportunidades de testificar, de forma directa o con una palabra suave a favor de Cristo, sabiendo que Dios dará el crecimiento a la semilla sembrada.` }
+  ]
+}
+];
+
+/* Preguntas del simulacro. La respuesta correcta va primero y se mezcla al mostrar. */
+const PREGUNTAS = [
+  // Capítulo 1
+  { c: 1, q: '¿Qué experiencia religiosa debe tener el ministro de Dios?', o: ['Una experiencia profunda que incluye el nuevo nacimiento y un caminar constante con Dios', 'Haber estudiado varios años en un seminario', 'Haber nacido en un hogar cristiano', 'Haber tenido una visión del cielo'], e: 'El ministro tiene que haber conocido a Dios en forma personal.' },
+  { c: 1, q: '¿Qué hacía Jesús, según los discípulos, que el ministro debe imitar?', o: ['Se levantaba muy de mañana para orar a solas', 'Predicaba todos los días en el templo', 'Ayunaba cuarenta días cada año', 'Leía la Ley en las sinagogas'], e: 'Marcos 1:35 muestra su vida devocional.' },
+  { c: 1, q: '¿Qué pecado cometió Abraham en Egipto?', o: ['Dijo que Sara era su hermana', 'Se emborrachó', 'Engañó a su suegro', 'Adoró un becerro de oro'], e: 'Lo hizo por miedo a perder la vida, pero se arrepintió.' },
+  { c: 1, q: '¿A quién envió Dios a Natán para declararle su pecado?', o: ['Al rey David', 'Al rey Acab', 'Al rey Saúl', 'Al rey Ezequías'], e: 'Natán confrontó a David (2 S 12). Elías confrontó a Acab.' },
+  { c: 1, q: '¿Qué debían ser los diáconos según Hechos 6?', o: ['De buen testimonio y llenos del Espíritu Santo', 'Ricos y respetados en la ciudad', 'Ancianos de más de cincuenta años', 'Expertos en la Ley de Moisés'], e: 'Su calidad moral fue clave para el crecimiento de la iglesia.' },
+  { c: 1, q: '¿Qué pasajes resumen mejor los requisitos de los pastores?', o: ['1 Timoteo 3:1-7 y Tito 1:5-9', 'Génesis 12 y Éxodo 3', 'Mateo 5 y Lucas 6', 'Apocalipsis 2 y 3'], e: 'Es el resumen más completo de normas éticas para ministros en la Biblia.' },
+  { c: 1, q: '¿Qué pide Hebreos 13:7?', o: ['Acordarse de los pastores, considerar su conducta e imitar su fe', 'Obedecer a los reyes en todo', 'Dar el diezmo a los sacerdotes', 'Evitar a los falsos profetas'], e: 'La conducta del pastor respalda su mensaje.' },
+  // Capítulo 2
+  { c: 2, q: '¿Qué texto cita el autor sobre el llamado de Bernabé y Saulo?', o: ['«Apartadme a Bernabé y a Saulo para la obra a que los he llamado»', '«Id y haced discípulos a todas las naciones»', '«Heme aquí, envíame a mí»', '«Sígueme y te haré pescador de hombres»'], e: 'Hechos 13:2.' },
+  { c: 2, q: 'Según Bratcher, ¿qué es el síndrome de «caminar sobre el agua»?', o: ['La necesidad del ministro de aparentar que puede resolverlo todo', 'El deseo de hacer milagros para atraer gente', 'El miedo a predicar en público', 'La costumbre de bautizar en ríos'], e: 'Produce poca estima propia y una máscara profesional.' },
+  { c: 2, q: 'Si el ministro descubre motivos no tan altruistas en su llamado, ¿qué debe hacer?', o: ['Pulir sus motivos para hacerlos menos egoístas', 'Abandonar el ministerio', 'Ignorarlos', 'Confesarlos ante toda la iglesia'], e: 'Es el consejo de J. B. Phillips.' },
+  { c: 2, q: '¿Cuántas horas diarias de preparación intelectual recomienda el libro?', o: ['De tres a cuatro horas', 'Media hora', 'Ocho horas', 'Una hora a la semana'], e: 'El pastor alimenta a su congregación dos o tres veces por semana.' },
+  { c: 2, q: '¿Cada cuánto debe hacerse un examen médico el ministro mayor de 50 años?', o: ['Cada año', 'Cada dos años', 'Cada cinco años', 'Solo cuando se sienta mal'], e: 'Antes de los 50, cada dos años.' },
+  { c: 2, q: '¿Qué palabra de 1 Timoteo 3 resume la ética personal del ministro?', o: ['Irreprensible', 'Humilde', 'Elocuente', 'Próspero'], e: 'Es la norma ética más alta para su vida personal y pública.' },
+  { c: 2, q: 'Según el libro, ¿cuál es uno de los pecados más comunes entre ministros?', o: ['La glotonería', 'La pereza para predicar', 'El exceso de deporte', 'Leer demasiado'], e: 'Los miembros siempre los invitan a comer.' },
+  // Capítulo 3
+  { c: 3, q: '¿Cómo debe amar el esposo a su esposa?', o: ['Como Cristo amó a la iglesia', 'Como un jefe a su empleada', 'Solo cuando ella lo merezca', 'Igual que a los miembros de la iglesia'], e: 'Sin condiciones, con sacrificio y sin egoísmo.' },
+  { c: 3, q: '¿Qué recomienda el autor para mantener vivo el amor en el matrimonio del pastor?', o: ['Una cita especial con la esposa cada semana o cada quince días', 'Un viaje largo cada cinco años', 'Hablar del matrimonio en los sermones', 'Que la esposa dirija la iglesia'], e: 'No hace falta gastar mucho dinero.' },
+  { c: 3, q: '¿Cuál es la queja más frecuente de la familia del pastor?', o: ['Que no pasa tiempo suficiente con ellos', 'Que gana demasiado dinero', 'Que viaja poco', 'Que no predica bien'], e: 'Muchas veces tenemos tiempo para los hijos de todos menos para los nuestros.' },
+  { c: 3, q: '¿De quién es la responsabilidad de disciplinar a los hijos?', o: ['De ambos padres', 'Solo de la madre', 'Solo del padre', 'De los maestros de la escuela dominical'], e: 'El papá no debe dejarla toda a la mamá.' },
+  { c: 3, q: 'Según los estudios, ¿qué encabeza las causas de estrés en los hogares pastorales?', o: ['Los ingresos inadecuados', 'Los conflictos con los vecinos', 'El exceso de vacaciones', 'Las enfermedades'], e: 'Casi todos los pastores encuestados señalaron la estrechez económica.' },
+  { c: 3, q: '¿Dónde es mejor que esté la casa pastoral?', o: ['Cerca del templo, pero no dentro ni pegada a él', 'Dentro del templo', 'Lejos del templo', 'En la casa del diácono principal'], e: 'Así la familia llega fácil y a la vez tiene vida privada.' },
+  { c: 3, q: '¿Qué pacto deben hacer el pastor y su esposa?', o: ['No discutir sus diferencias personales en público', 'No tener hijos mientras sirven', 'No salir nunca de vacaciones', 'Decidir todo con los diáconos'], e: 'Las diferencias se resuelven en privado.' },
+  // Capítulo 4
+  { c: 4, q: '¿Debe un ministro presentarse ante una iglesia para ofrecerse como pastor?', o: ['No, porque es una falla en la ética ministerial', 'Sí, si la iglesia no tiene pastor', 'Sí, siempre que lleve cartas de recomendación', 'Solo si es de su misma ciudad'], e: 'Igual que los médicos no salen a buscar pacientes.' },
+  { c: 4, q: 'Si un pastor acepta la invitación de otra iglesia, ¿cuándo debe renunciar a la actual?', o: ['Al mismo tiempo que acepta la otra invitación', 'Seis meses después', 'Solo cuando la iglesia se entere', 'Un año después'], e: 'Así evita malentendidos y sentimientos heridos.' },
+  { c: 4, q: 'Si unos miembros critican al pastor anterior, ¿qué debe hacer el nuevo pastor?', o: ['Cambiar el tema con amabilidad', 'Escuchar todo para conocer los problemas', 'Contarle al pastor anterior', 'Criticarlo también'], e: 'Es mejor pensar en el futuro de la iglesia.' },
+  { c: 4, q: '¿Qué debe dejar el pastor que se va a su sucesor?', o: ['Los informes en orden y una lista de miembros en perspectiva', 'Sus libros y sermones', 'Una lista de los miembros problemáticos', 'Su casa amueblada'], e: 'El autor dejó tarjetas y luego bautizaron a muchos de esa lista.' },
+  { c: 4, q: '¿Quién tiene la primera prioridad en la visitación pastoral?', o: ['Los enfermos en el hospital', 'Los ausentes', 'Los diáconos', 'Los visitantes nuevos'], e: 'Luego siguen los enfermos en casa y los que sufren una tragedia.' },
+  { c: 4, q: '¿Cuál de estas es una norma al visitar en el hospital?', o: ['Tocar la puerta antes de entrar', 'Sentarse en la cama del enfermo', 'Preguntar cuál es su enfermedad', 'Contarle los problemas de la iglesia'], e: 'Las otras tres son cosas que no se deben hacer.' },
+  { c: 4, q: '¿Qué dice el libro sobre hacer negocios o préstamos con los miembros?', o: ['Que no es sabio, porque puede dañar la relación espiritual', 'Que es una buena forma de ayudarlos', 'Que se puede si hay un contrato', 'Que solo se puede con los diáconos'], e: 'Para ayudar, la iglesia debe tener un fondo de ayuda.' },
+  { c: 4, q: '¿Quién preguntó «¿Hay palabra de Jehová?»?', o: ['El rey Sedequías a Jeremías', 'El rey David a Natán', 'Moisés a Aarón', 'Pablo a Timoteo'], e: 'Es la misma pregunta con la que la gente llega al culto.' },
+  // Capítulo 5
+  { c: 5, q: '¿Cuáles son las tres preguntas que debe responder cada ministro?', o: ['¿Quién soy? ¿Cuál es mi evangelio? ¿Quién es mi pueblo?', '¿Dónde sirvo? ¿Cuánto gano? ¿Quién me paga?', '¿Qué estudio? ¿Qué predico? ¿A quién visito?', '¿Quién me llamó? ¿Quién me ordenó? ¿Quién me sigue?'], e: 'La tercera pregunta lleva a decidir su denominación.' },
+  { c: 5, q: '¿De quién es prerrogativa la ordenación?', o: ['De la iglesia local, con la colaboración de otras iglesias de su denominación', 'Solo del presidente de la convención', 'Del seminario donde estudió', 'Del gobierno del país'], e: 'Un grupo de pastores examina al candidato.' },
+  { c: 5, q: '¿Qué pasaje bíblico se usa como base de la ordenación?', o: ['1 Timoteo 4:14, la imposición de manos del presbiterio', 'Hechos 6', 'Hebreos 13:7', 'Mateo 18'], e: 'Es un acto simbólico que afirma lo que Dios ya hizo.' },
+  { c: 5, q: '¿Qué debe hacer el pastor que llega a diferir en doctrinas fundamentales?', o: ['Entregar su certificado de ordenación y renunciar', 'Sacar a su iglesia de la denominación', 'Quedarse callado', 'Cambiar los estatutos'], e: 'No es ético llevarse la iglesia a otra denominación.' },
+  { c: 5, q: 'Si el plan que propuso un pastor no se aprueba en la convención, ¿qué debe hacer?', o: ['Aceptar la decisión de la mayoría y seguir colaborando', 'Retirarse de la denominación', 'Dejar de ofrendar', 'Formar otro grupo'], e: 'Los bautistas usan el proceso democrático.' },
+  { c: 5, q: '¿Cuál es la raíz de las diferencias dentro de la denominación, según el autor?', o: ['El egoísmo', 'La falta de dinero', 'La distancia entre iglesias', 'Las diferencias de idioma'], e: 'Hay más diferencias sobre cómo hacer la obra que sobre doctrina.' },
+  // Capítulo 6
+  { c: 6, q: 'Según el autor, ¿cuál es el mayor enemigo de las iglesias?', o: ['La incredulidad', 'Las otras denominaciones', 'El bautismo de infantes', 'La falta de templos'], e: 'Se ve en la indiferencia espiritual, el materialismo y el secularismo.' },
+  { c: 6, q: '¿Qué doctrina bautista lleva a respetar a las personas de otras denominaciones?', o: ['La libertad de conciencia', 'La predestinación', 'La santa cena', 'El diezmo'], e: 'Cada persona tiene derecho a creer según su conciencia.' },
+  { c: 6, q: 'En una campaña unida, ¿a qué iglesia se envía a los nuevos creyentes?', o: ['A la iglesia evangélica más cercana a su casa', 'A la iglesia que más dinero aportó', 'A la iglesia del evangelista', 'A la iglesia más grande'], e: 'Así pueden asistir cerca de su hogar.' },
+  { c: 6, q: '¿Qué fue CEDEC?', o: ['La Confederación Evangélica de Colombia, que enfrentó la persecución', 'Un seminario bautista', 'Una campaña de Billy Graham', 'Una editorial de Biblias'], e: 'Gracias a su trabajo cesaron las persecuciones.' },
+  { c: 6, q: '¿Qué opina el autor de dividir un país en territorios para cada denominación?', o: ['Que no conviene, porque limita la Gran Comisión', 'Que es la mejor forma de evangelizar', 'Que debe hacerlo el gobierno', 'Que solo sirve en ciudades grandes'], e: 'Cristo mandó predicar a toda criatura.' },
+  { c: 6, q: 'Si invitan al ministro a orar sin mencionar a Jesús, ¿qué cree el autor?', o: ['Que no debe aceptar', 'Que debe aceptar sin problema', 'Que puede orar en silencio', 'Que debe enviar a otra persona'], e: 'No hay que comprometer las convicciones.' },
+  { c: 6, q: '¿Qué significa la palabra «diálogo»?', o: ['Comunicación por medio de la palabra', 'Discusión para ganar', 'Palabra de Dios', 'Reunión de pastores'], e: 'Dia quiere decir «a través de» y logos quiere decir «palabra».' },
+  // Capítulo 7
+  { c: 7, q: '¿A qué es llamado el ministro en la sociedad?', o: ['A ser levadura', 'A ser juez', 'A ser político', 'A separarse del mundo'], e: 'Debe ganar a otros para Cristo e influir en la sociedad.' },
+  { c: 7, q: '¿Cuáles son deberes del ministro como ciudadano?', o: ['Pagar impuestos, votar y obedecer las leyes', 'Formar un partido político', 'No votar para ser neutral', 'Pedir exención de impuestos'], e: 'Debe ser ejemplo como ciudadano cristiano.' },
+  { c: 7, q: 'Cuando el ministro ora en un acto público, ¿qué debe hacer?', o: ['Representar a todo el pueblo sin promover su iglesia', 'Invitar a todos a su iglesia', 'Predicar un sermón largo', 'Hablar de su denominación'], e: 'Solo invoca la presencia de Dios sobre la comunidad.' },
+  { c: 7, q: '¿Cómo es mejor que sea visto el ministro en un jurado?', o: ['Como un hombre de misericordia y no de juicio', 'Como el juez principal', 'Como testigo de la iglesia', 'Como abogado defensor'], e: 'Debe guardar las confidencias que recibe.' },
+  { c: 7, q: '¿Qué opina el autor sobre el ministro y la guerra?', o: ['Que no debe llevar armas, aunque puede ser capellán', 'Que debe combatir como cualquier ciudadano', 'Que debe salir del país', 'Que no debe ayudar a los soldados'], e: 'Es contradictorio predicar el valor de la vida y matar.' },
+  { c: 7, q: '¿Cómo deben buscarse los cambios sociales, según el autor?', o: ['Dentro del proceso político establecido', 'Con grupos armados', 'Sin hacer nada', 'Con huelgas obligatorias'], e: 'Buscando leyes que favorezcan a los pobres y oprimidos.' },
+  { c: 7, q: '¿Cuáles son los cuatro pasos del ministro en un mundo convulsionado?', o: ['Informarse, informar, dialogar y orar', 'Orar, ayunar, predicar y visitar', 'Votar, protestar, escribir y esperar', 'Leer, enseñar, cantar y servir'], e: 'Son los subtítulos 7.3.1 al 7.3.4.' },
+  { c: 7, q: '¿Qué ejemplo bíblico usa el autor sobre el poder de la oración?', o: ['Ezequías ante el ejército de Senaquerib', 'Daniel en el foso de los leones', 'Jonás en el gran pez', 'Pablo en la cárcel'], e: 'El ángel de Jehová derrotó al ejército asirio (Is 37:36).' }
+];
+
+/* Pareos: une cada elemento con su pareja. */
+const PAREOS = [
+  { c: 1, title: 'Une cada personaje con lo que hizo', pairs: [['Moisés', 'Fue mediador cuando Dios dio los Diez Mandamientos'], ['Natán', 'Declaró a David su pecado'], ['Elías', 'Denunció a Acab por la viña de Nabot'], ['Judas', 'Era ladrón de corazón'], ['Jacob', 'Llamó a su familia a volver a Dios']] },
+  { c: 2, title: 'Une cada tipo de salud con lo que pide el libro', pairs: [['Salud emocional', 'Equilibrio y dominio propio'], ['Salud física', 'Ejercicio, descanso y examen médico'], ['Salud intelectual', 'De tres a cuatro horas diarias de estudio'], ['Salud espiritual', 'Tiempo diario personal con la Biblia y la oración']] },
+  { c: 3, title: 'Une cada autor o pasaje con su enseñanza', pairs: [['Gothard y LaHaye', 'Modelo de autoridad jerárquico'], ['Gordon y Ginott', 'Modelo de autoridad democrático'], ['Seamonds', 'La sanidad de los recuerdos'], ['1 Pedro 3:3-4', 'El adorno interno y no el externo']] },
+  { c: 4, title: 'Une cada término con su significado', pairs: [['Comisión de Púlpito', 'Estudia al pastor candidato'], ['Antecesor', 'No debe regresar a hacer bodas ni funerales'], ['W. O. Vaught', 'Predicó versículo tras versículo'], ['Fondo de ayuda', 'Sirve para ayudar a miembros con necesidad']] },
+  { c: 5, title: 'Une cada pregunta o persona con su sentido', pairs: [['¿Quién soy?', 'Su identidad como hijo de Dios'], ['¿Cuál es mi evangelio?', 'Lo que cree de las doctrinas'], ['¿Quién es mi pueblo?', 'Su denominación'], ['H. Harvey', 'Los votos de ordenación se hacen a Dios']] },
+  { c: 6, title: 'Une cada tema con lo que dice el libro', pairs: [['Campañas unidas', 'Esfera de cooperación'], ['Instituciones de educación', 'Esfera de no colaboración'], ['Movimiento ecuménico', 'Optó por un evangelio social'], ['Sociedad Bíblica', 'Campañas de distribución de la Biblia']] },
+  { c: 7, title: 'Une cada idea con su ejemplo', pairs: [['Informarse bien', 'Como el médico antes de operar'], ['Dialogar ampliamente', 'En la multitud de consejeros hay seguridad'], ['Orar diligentemente', 'Ezequías ante Senaquerib'], ['Vender la primogenitura por un guisado', 'Aliarse con grupos de bases ateas']] }
+];
+</script>
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+import { getFirestore, doc, getDoc, setDoc, collection, getDocs, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+/* Conexión con Firebase (estos datos identifican el proyecto, no son secretos) */
+const fbApp = initializeApp({
+  apiKey: 'AIzaSyBVpJHDmpME3Xr4_A02atv7LZjaH14wPgw',
+  authDomain: 'etica-pastoral.firebaseapp.com',
+  projectId: 'etica-pastoral',
+  storageBucket: 'etica-pastoral.firebasestorage.app',
+  messagingSenderId: '10882627686',
+  appId: '1:10882627686:web:ad6077310c826296c655a7'
+});
+const auth = getAuth(fbApp);
+const fdb = getFirestore(fbApp);
+const DOMINIO = '@etica-pastoral.app';
+
+(() => {
+'use strict';
+
+/* ---------- Utilidades ---------- */
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const RM = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+const lab2 = (a, b) => `<span class="lab2"><span>${esc(a)}</span><span>${esc(b)}</span></span>`;
+const LETRAS = ['A', 'B', 'C', 'D', 'E'];
+const esNum = id => /^\d/.test(id);
+
+/* ---------- Progreso guardado en la nube (Firebase) ---------- */
+const SES = { uid: null, nombre: '', usuario: '', esProfe: false };
+const P = { leidos: {}, sims: [] };
+let guardarT = null;
+function save() {
+  if (!SES.uid) return;
+  clearTimeout(guardarT);
+  guardarT = setTimeout(guardarAhora, 700);
+}
+async function guardarAhora() {
+  if (!SES.uid) return;
+  try {
+    await setDoc(doc(fdb, 'usuarios', SES.uid), {
+      nombre: SES.nombre, usuario: SES.usuario,
+      leidos: Object.keys(P.leidos), sims: P.sims.slice(0, 60),
+      actualizado: serverTimestamp()
+    }, { merge: true });
+  } catch (e) { toast('No se pudo guardar, revisa tu conexión a internet'); }
+}
+window.addEventListener('pagehide', () => { if (guardarT) { clearTimeout(guardarT); guardarAhora(); } });
+const clave = (n, id) => n + '|' + id;
+const leido = (n, id) => !!P.leidos[clave(n, id)];
+const leidosCap = c => c.subs.filter(s => leido(c.n, s.id)).length;
+const pctCap = c => Math.round(leidosCap(c) / c.subs.length * 100);
+const TOTAL_SUBS = CAPS.reduce((a, c) => a + c.subs.length, 0);
+
+/* ---------- Texto con formato simple ---------- */
+function inline(t) {
+  return esc(t).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/(^|[^*\w])\*(?=\S)(.+?)\*(?!\w)/g, '$1<em>$2</em>');
+}
+function blocks(src) {
+  let html = '', list = null;
+  const close = () => { if (list) { html += `</${list}>`; list = null; } };
+  src.split('\n').forEach(raw => {
+    const line = raw.trim(); if (!line) return;
+    const ul = line.match(/^-\s+(.*)$/), ol = line.match(/^\d+\.\s+(.*)$/);
+    if (ul || ol) {
+      const tag = ul ? 'ul' : 'ol';
+      if (list !== tag) { close(); html += `<${tag}>`; list = tag; }
+      html += `<li>${inline((ul || ol)[1])}</li>`;
+    } else { close(); html += `<p>${inline(line)}</p>`; }
+  });
+  close();
+  return html;
+}
+
+/* ---------- Navegación ---------- */
+const view = $('#view');
+const state = { route: 'inicio', tab: {}, nodo: 1, progTab: 'general', simSel: 'todos', sim: null, hoja: null };
+const ROUTES = /^(inicio|capitulos|simulacro|progreso|panel|cap-[1-7])$/;
+function go(route) {
+  if (!ROUTES.test(route)) route = 'inicio';
+  cerrarHoja(true);
+  state.route = route;
+  render();
+  window.scrollTo(0, 0);
+  try { if (location.hash.slice(1) !== route) location.hash = route; } catch (e) { /* sin hash */ }
+}
+window.addEventListener('hashchange', () => {
+  const r = (location.hash || '').slice(1) || 'inicio';
+  if (r !== state.route && ROUTES.test(r)) { cerrarHoja(true); state.route = r; render(); window.scrollTo(0, 0); }
+});
+function render() {
+  const r = state.route, m = r.match(/^cap-([1-7])$/);
+  if (m) renderCap(+m[1]);
+  else if (r === 'capitulos') renderCapitulos();
+  else if (r === 'simulacro') renderSim();
+  else if (r === 'progreso') renderProgreso();
+  else if (r === 'panel') renderPanel();
+  else renderInicio();
+  $$('[data-nav]').forEach(b => {
+    const on = b.dataset.nav === r || (b.dataset.nav === 'capitulos' && !!m);
+    if (on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
+  });
+}
+
+/* ---------- Inicio: la línea de los 7 capítulos ---------- */
+function panelResumen(n) {
+  const c = CAPS[n - 1], r = c.resumen;
+  return `<span class="label">Capítulo ${n} · ${esc(c.ring)}</span>
+    <h2 class="h2">${esc(c.title)}</h2>
+    <p class="jp-idea">${inline(r.idea)}</p>
+    <div class="row">
+      <a class="btn btn-primary" href="#cap-${n}" data-go="cap-${n}">Leer el capítulo ${n}</a>
+      ${n < 7 ? `<button class="btn" type="button" data-act="nodo" data-k="${n + 1}">Siguiente: ${esc(CAPS[n].ring)} →</button>` : ''}
+    </div>`;
+}
+function lineaHTML() {
+  const sel = state.nodo;
+  return `<div class="track" role="tablist" aria-label="Capítulos del libro">
+    <span class="line" aria-hidden="true"><i style="width:${((sel - 1) / 6) * 100}%"></i></span>
+    ${CAPS.map(c => `<button class="node${c.n === sel ? ' on' : ''}${c.n < sel ? ' past' : ''}" type="button" role="tab" aria-selected="${c.n === sel}" aria-controls="jpanel" data-act="nodo" data-k="${c.n}" style="--s:${28 + c.n * 3}px;--cc:var(--c${c.n})">
+      <span class="dotwrap"><span class="dot">${c.n}</span></span><span class="nm">${esc(c.ring).replace('Denominación', 'Denomi&shy;nación')}</span></button>`).join('')}
+  </div>`;
+}
+function renderInicio() {
+  view.innerHTML = `
+  <section class="home">
+    <div class="hero-txt">
+      <h1 class="h-display titulo" id="titulo" aria-label="Ética Pastoral">${letras('Ética Pastoral')}</h1>
+      <p class="sub">De pastor a pastor</p>
+      <p class="hola">Hola, ${esc(SES.nombre.split(' ')[0] || SES.usuario)}</p>
+      <p class="lead">Un libro sobre cómo debe vivir el ministro de Dios, empieza en la Biblia, sigue con su persona, su familia, su iglesia y su denominación, y termina en la comunidad, como círculos que se abren del centro hacia afuera</p>
+      <div class="row"><a class="btn btn-primary btn-big" href="#capitulos" data-go="capitulos">Empezar a estudiar</a></div>
+    </div>
+    <div class="journey">
+      <p class="label">Del centro hacia afuera</p>
+      <div id="linea">${lineaHTML()}</div>
+      <div class="jpanel card" id="jpanel" role="tabpanel" aria-live="polite">${panelResumen(state.nodo)}</div>
+    </div>
+  </section>`;
+  animarTitulo();
+}
+/* Título con letras que reaccionan al mouse o al dedo */
+function letras(t) {
+  let k = 0;
+  return t.split(' ').map(p => `<span class="palabra" aria-hidden="true">${[...p].map(ch => `<span class="letra" style="--i:${k++}">${esc(ch)}</span>`).join('')}</span>`).join(' ');
+}
+function animarTitulo() {
+  const h = $('#titulo'); if (!h || RM()) return;
+  const ls = $$('.letra', h);
+  let raf = 0, px = 0, py = 0, base = null;
+  const medir = () => {
+    const hr = h.getBoundingClientRect();
+    base = ls.map(l => { const t = l.style.transform; l.style.transform = ''; const r = l.getBoundingClientRect(); l.style.transform = t; return [r.left + r.width / 2 - hr.left, r.top + r.height / 2 - hr.top]; });
+  };
+  window.addEventListener('resize', () => { base = null; });
+  const mover = () => {
+    raf = 0;
+    if (!document.body.contains(h)) return;
+    if (!base) medir();
+    const hr = h.getBoundingClientRect();
+    ls.forEach((l, i) => {
+      const dx = px - (hr.left + base[i][0]), dy = py - (hr.top + base[i][1]);
+      const f = Math.max(0, 1 - Math.hypot(dx, dy * 1.4) / 170);
+      l.style.transform = f ? `translateY(${(-f * 18).toFixed(1)}px) rotate(${(dx / 40 * f).toFixed(1)}deg) scale(${(1 + f * .14).toFixed(3)})` : '';
+      l.classList.toggle('cerca', f > .45);
+    });
+  };
+  const seguir = (x, y) => { px = x; py = y; if (!raf) raf = requestAnimationFrame(mover); };
+  const soltar = () => { if (raf) cancelAnimationFrame(raf); raf = 0; ls.forEach(l => { l.style.transform = ''; l.classList.remove('cerca'); }); };
+  const zona = h.parentElement;
+  zona.addEventListener('pointermove', e => seguir(e.clientX, e.clientY));
+  zona.addEventListener('pointerleave', soltar);
+  h.addEventListener('touchmove', e => { const t = e.touches[0]; if (t) seguir(t.clientX, t.clientY); }, { passive: true });
+  h.addEventListener('touchend', soltar);
+}
+function elegirNodo(n) {
+  state.nodo = n;
+  $('#linea').innerHTML = lineaHTML();
+  const p = $('#jpanel');
+  p.classList.remove('swap'); void p.offsetWidth; p.classList.add('swap');
+  p.innerHTML = panelResumen(n);
+  const r = p.getBoundingClientRect();
+  if (r.top < 70 || r.top > innerHeight * .6) $('#linea').scrollIntoView({ block: 'start', behavior: RM() ? 'auto' : 'smooth' });
+  const b = $(`.node[data-k="${n}"]`); if (b) b.focus({ preventScroll: true });
+}
+
+/* ---------- Capítulos ---------- */
+function renderCapitulos() {
+  view.innerHTML = `
+  <div class="narrow col">
+    <h1 class="h1 centro">Capítulos</h1>
+    <div class="caplist">${CAPS.map(c => { const p = pctCap(c); return `
+      <a class="capitem" href="#cap-${c.n}" data-go="cap-${c.n}">
+        <span class="badge" style="background:var(--c${c.n})">${c.n}</span>
+        <span class="t"><b>${esc(c.title)}</b>
+          <span class="mini"><span class="bar"><i style="width:${p}%"></i></span><span class="small muted">${p === 100 ? '✓ Leído completo' : p + '% leído'}</span></span></span>
+      </a>`; }).join('')}</div>
+  </div>`;
+}
+
+/* ---------- Un capítulo ---------- */
+function renderCap(n) {
+  const c = CAPS[n - 1], tab = state.tab[n] || 'capitulo';
+  view.innerHTML = `
+  <div class="narrow col">
+    <a class="btn btn-sm back" href="#capitulos" data-go="capitulos">← Capítulos</a>
+    <div class="col centro" style="gap:8px"><span class="label">Capítulo ${n}</span><h1 class="h1">${esc(c.title)}</h1></div>
+    <div class="tabs centrado" role="tablist" aria-label="Partes del capítulo">
+      <button class="btn" type="button" role="tab" aria-selected="${tab === 'capitulo'}" data-act="tab" data-k="capitulo">Capítulo</button>
+      <button class="btn" type="button" role="tab" aria-selected="${tab === 'resumen'}" data-act="tab" data-k="resumen">Resumen</button>
+    </div>
+    <div id="panel" role="tabpanel" class="col">${tab === 'capitulo' ? listaHTML(c) : resumenHTML(c)}</div>
+    ${finalHTML(c)}
+  </div>`;
+}
+function listaHTML(c) {
+  const l = leidosCap(c), p = pctCap(c);
+  return `
+    <div class="card col" style="gap:10px">
+      <div class="row-between"><span class="label">Tu lectura</span><strong>${l} de ${c.subs.length} subtítulos · ${p}%</strong></div>
+      <div class="bar"><i style="width:${p}%"></i></div>
+      <p class="muted small">Toca un subtítulo para abrirlo. Al terminar de leerlo, márcalo como leído.</p>
+    </div>
+    <div class="sublist">${c.subs.map((s, i) => { const ok = leido(c.n, s.id); return `
+      <button class="subitem${ok ? ' read' : ''}" type="button" data-act="abrir" data-k="${i}">
+        <span class="n">${esNum(s.id) ? esc(s.id) : ''}</span>
+        <span class="tt">${esc(s.t)}</span>
+        <span class="chk" aria-label="${ok ? 'Leído' : 'Sin leer'}">${ok ? '✓' : ''}</span>
+      </button>`; }).join('')}</div>`;
+}
+function resumenHTML(c) {
+  const r = c.resumen;
+  return `
+    <div class="card card-strong col" style="gap:10px"><span class="label">Idea central</span><p class="idea">${inline(r.idea)}</p></div>
+    <div class="card col" style="gap:12px"><span class="label">Lo principal</span><ul class="points">${r.puntos.map(p => `<li>${inline(p)}</li>`).join('')}</ul></div>
+    <div class="card recuerda col" style="gap:8px"><span class="label">Para recordar</span><p>${inline(r.recuerda)}</p></div>`;
+}
+function finalHTML(c) {
+  const n = c.n;
+  return `
+  <div class="card col" style="gap:14px">
+    <div class="row"><button class="btn" type="button" data-act="practicar" data-k="${n}">Practicar este capítulo</button></div>
+    <div class="row-between">
+      ${n > 1 ? `<a class="btn btn-sm" href="#cap-${n - 1}" data-go="cap-${n - 1}">← Capítulo ${n - 1}</a>` : '<span></span>'}
+      ${n < 7 ? `<a class="btn btn-sm" href="#cap-${n + 1}" data-go="cap-${n + 1}">Capítulo ${n + 1} →</a>` : `<a class="btn btn-sm" href="#simulacro" data-go="simulacro">Ir al simulacro →</a>`}
+    </div>
+  </div>`;
+}
+
+/* ---------- Bloque de subtítulo en el centro ---------- */
+const hoja = $('#sheet');
+let ultimoFoco = null;
+function abrirHoja(n, i) {
+  const primera = !state.hoja;
+  state.hoja = { n, i };
+  if (primera) {
+    ultimoFoco = document.activeElement;
+    hoja.hidden = false; document.body.classList.add('no-scroll');
+    try { history.pushState({ hoja: 1 }, ''); } catch (e) { /* sin historial */ }
+  }
+  dibujarHoja();
+  $('#sheetClose').focus({ preventScroll: true });
+}
+function dibujarHoja() {
+  const { n, i } = state.hoja, c = CAPS[n - 1], s = c.subs[i], ok = leido(n, s.id);
+  $('#sheetNum').textContent = esNum(s.id) ? `${s.id} · Capítulo ${n}` : `Capítulo ${n}`;
+  $('#sheetTitle').textContent = s.t;
+  $('#sheetPos').textContent = `${i + 1} de ${c.subs.length}`;
+  const body = $('#sheetBody');
+  body.innerHTML = `<div class="prose">${blocks(s.b)}</div>`;
+  body.scrollTop = 0;
+  const lb = $('#sheetRead');
+  lb.textContent = ok ? '✓ Leído' : 'Marcar como leído';
+  lb.setAttribute('aria-pressed', ok);
+  lb.classList.toggle('btn-primary', !ok);
+  $('#sheetPrev').disabled = i === 0;
+  $('#sheetNext').disabled = i === c.subs.length - 1;
+}
+function cerrarHoja(sinHistorial) {
+  if (!state.hoja) return;
+  const n = state.hoja.n;
+  state.hoja = null; hoja.hidden = true; document.body.classList.remove('no-scroll');
+  if (!sinHistorial) { try { if (history.state && history.state.hoja) history.back(); } catch (e) { /* sin historial */ } }
+  if (state.route === 'cap-' + n) {
+    const y = window.scrollY; renderCap(n); window.scrollTo(0, y);
+    if (ultimoFoco && ultimoFoco.dataset && ultimoFoco.dataset.k != null) { const b = $(`.subitem[data-k="${ultimoFoco.dataset.k}"]`); if (b) b.focus({ preventScroll: true }); }
+  }
+}
+window.addEventListener('popstate', () => { if (state.hoja) cerrarHoja(true); });
+function marcarLeido() {
+  const { n, i } = state.hoja, c = CAPS[n - 1], s = c.subs[i], k = clave(n, s.id);
+  if (P.leidos[k]) delete P.leidos[k]; else P.leidos[k] = Date.now();
+  save('leidos');
+  dibujarHoja();
+  if (P.leidos[k]) toast(pctCap(c) === 100 ? `¡Terminaste el capítulo ${n}!` : `Leído · capítulo ${n} al ${pctCap(c)}%`);
+}
+
+/* ---------- Simulacro ---------- */
+function armarSimulacro(sel) {
+  const qs = [];
+  if (sel === 'todos') {
+    CAPS.forEach(c => shuffle(PREGUNTAS.filter(q => q.c === c.n)).slice(0, 3).forEach(q => qs.push({ tipo: 'opcion', ...q })));
+    const ps = shuffle(PAREOS).slice(0, 2).map(p => ({ tipo: 'pareo', ...p }));
+    return [...shuffle(qs), ...ps];
+  }
+  const n = +sel;
+  return [...shuffle(PREGUNTAS.filter(q => q.c === n)).map(q => ({ tipo: 'opcion', ...q })), ...PAREOS.filter(p => p.c === n).map(p => ({ tipo: 'pareo', ...p }))];
+}
+function contar(sel) {
+  const qs = armarSimulacro(sel);
+  const preg = qs.filter(q => q.tipo === 'opcion').length, par = qs.filter(q => q.tipo === 'pareo').length;
+  return `${preg} preguntas y ${par} ${par === 1 ? 'pareo' : 'pareos'}`;
+}
+const selNombre = sel => sel === 'todos' ? 'Todos los capítulos' : 'Capítulo ' + sel;
+function renderSim() {
+  if (state.sim) return dibujarPregunta();
+  const sel = state.simSel;
+  view.innerHTML = `
+  <div class="narrow col">
+    <div class="col centro" style="gap:10px"><h1 class="h1">Simulacro</h1><p class="lead">Preguntas sacadas del libro, con su respuesta, y algunos pareos. Elige qué quieres practicar.</p></div>
+    <div class="card col centro" style="gap:16px">
+      <span class="label">¿Qué quieres practicar?</span>
+      <div class="choices" role="group" aria-label="Capítulos">
+        <button class="btn" type="button" data-act="sel" data-k="todos" aria-pressed="${sel === 'todos'}">Todos los capítulos</button>
+        ${CAPS.map(c => `<button class="btn" type="button" data-act="sel" data-k="${c.n}" aria-pressed="${sel === String(c.n)}">Capítulo ${c.n}</button>`).join('')}
+      </div>
+      <p class="muted">${esc(selNombre(sel))}: ${contar(sel)}.</p>
+      <button class="btn btn-primary btn-big" type="button" data-act="empezar">Empezar</button>
+    </div>
+  </div>`;
+}
+function empezarSim() {
+  state.sim = { sel: state.simSel, qs: armarSimulacro(state.simSel), i: 0, resp: [] };
+  state.sim.qs.forEach(q => {
+    if (q.tipo === 'opcion') q.ops = shuffle(q.o.map((t, k) => ({ t, ok: k === 0 })));
+    else q.der = shuffle(q.pairs.map(p => p[1]));
+  });
+  dibujarPregunta(); window.scrollTo(0, 0);
+}
+function puntos(sim) {
+  let ok = 0, tot = 0;
+  sim.qs.forEach((q, k) => {
+    const r = sim.resp[k];
+    if (q.tipo === 'opcion') { tot++; if (r && r.ok) ok++; }
+    else { tot += q.pairs.length; if (r) ok += r.aciertos; }
+  });
+  return { ok, tot, pct: tot ? Math.round(ok / tot * 100) : 0 };
+}
+function dibujarPregunta() {
+  const s = state.sim;
+  if (s.i >= s.qs.length) return dibujarResultado();
+  const q = s.qs[s.i], r = s.resp[s.i];
+  const cab = `<div class="qhead"><span>Pregunta ${s.i + 1} de ${s.qs.length}</span><span class="tag">Capítulo ${q.c}</span>${q.tipo === 'pareo' ? '<span class="tag">Pareo</span>' : ''}</div><div class="bar"><i style="width:${Math.round(s.i / s.qs.length * 100)}%"></i></div>`;
+  let cuerpo = '';
+  if (q.tipo === 'opcion') {
+    cuerpo = `<h2 class="qtext">${esc(q.q)}</h2>
+      <div class="opts">${q.ops.map((o, k) => {
+        const cls = r ? (o.ok ? ' right' : (r.pick === k ? ' wrong' : ' dim')) : '';
+        return `<button class="opt${cls}" type="button" data-act="elegir" data-k="${k}"${r ? ' disabled' : ''}><span class="k">${LETRAS[k]}</span><span>${esc(o.t)}</span></button>`;
+      }).join('')}</div>`;
+    if (r) {
+      const bien = q.ops.find(o => o.ok).t;
+      cuerpo += `<div class="fb ${r.ok ? 'ok' : 'bad'}" role="status"><span class="t">${r.ok ? '¡Correcto!' : 'Incorrecto'}</span>${r.ok ? '' : `<p>La respuesta es: <strong>${esc(bien)}</strong></p>`}${q.e ? `<p class="muted">${esc(q.e)}</p>` : ''}</div>`;
+    }
+  } else {
+    cuerpo = `<h2 class="qtext">${esc(q.title)}</h2><p class="muted">Elige la respuesta correcta para cada uno.</p>
+      <div class="pareo">${q.pairs.map((p, k) => {
+        const elegido = r ? r.sel[k] : (s.borrador && s.borrador[k]) || '';
+        const cls = r ? (elegido === p[1] ? ' right' : ' wrong') : '';
+        return `<div class="prow${cls}"><label class="l" for="p${k}">${esc(p[0])}</label>
+          <select id="p${k}" data-k="${k}"${r ? ' disabled' : ''}><option value="">Elige…</option>${q.der.map(d => `<option value="${esc(d)}"${d === elegido ? ' selected' : ''}>${esc(d)}</option>`).join('')}</select>
+          ${r && elegido !== p[1] ? `<span class="ans">Correcto: <strong>${esc(p[1])}</strong></span>` : ''}</div>`;
+      }).join('')}</div>`;
+    if (!r) cuerpo += `<button class="btn btn-primary btn-big" type="button" data-act="revisar">Revisar pareo</button>`;
+    else cuerpo += `<div class="fb ${r.aciertos === q.pairs.length ? 'ok' : 'bad'}" role="status"><span class="t">${r.aciertos} de ${q.pairs.length} correctas</span></div>`;
+  }
+  if (r) cuerpo += `<button class="btn btn-primary btn-big" type="button" data-act="siguiente">${s.i < s.qs.length - 1 ? 'Siguiente' : 'Ver mi resultado'}</button>`;
+  view.innerHTML = `<div class="narrow quiz">
+    <div class="row-between"><span class="label">${esc(selNombre(s.sel))}</span><button class="btn btn-sm" type="button" data-act="salir">Salir</button></div>
+    ${cab}${cuerpo}</div>`;
+  const fb = $('.fb', view);
+  if (fb) { const b = fb.getBoundingClientRect(); if (b.bottom > innerHeight - 90) fb.scrollIntoView({ block: 'center', behavior: RM() ? 'auto' : 'smooth' }); }
+}
+function dibujarResultado() {
+  const s = state.sim, p = puntos(s);
+  if (!s.guardado) { P.sims.unshift({ d: Date.now(), sel: s.sel, pct: p.pct, ok: p.ok, tot: p.tot }); P.sims = P.sims.slice(0, 60); save('sims'); s.guardado = true; }
+  const msg = p.pct >= 90 ? '¡Excelente! Dominas el tema.' : p.pct >= 70 ? 'Muy bien. Repasa las que fallaste.' : p.pct >= 50 ? 'Vas bien. Vuelve a leer los capítulos donde fallaste.' : 'Conviene repasar los capítulos antes de intentarlo otra vez.';
+  const items = s.qs.map((q, k) => {
+    const r = s.resp[k];
+    if (q.tipo === 'opcion') {
+      const ok = r && r.ok;
+      return `<div class="ritem ${ok ? 'ok' : 'bad'}"><span class="mk">${ok ? '✓ Correcta' : '✗ Incorrecta'} · Capítulo ${q.c}</span><strong>${esc(q.q)}</strong><span>Respuesta: ${esc(q.o[0])}</span></div>`;
+    }
+    const ok = r && r.aciertos === q.pairs.length;
+    return `<div class="ritem ${ok ? 'ok' : 'bad'}"><span class="mk">Pareo · ${r ? r.aciertos : 0} de ${q.pairs.length} · Capítulo ${q.c}</span><strong>${esc(q.title)}</strong>${q.pairs.map(pp => `<span>${esc(pp[0])} → ${esc(pp[1])}</span>`).join('')}</div>`;
+  }).join('');
+  view.innerHTML = `<div class="narrow quiz">
+    <span class="label">${esc(selNombre(s.sel))}</span>
+    <span class="score">${p.pct}%</span>
+    <p class="lead">${p.ok} de ${p.tot} aciertos. ${msg}</p>
+    <div class="bar"><i style="width:${p.pct}%"></i></div>
+    <div class="row"><button class="btn btn-primary btn-big" type="button" data-act="otro">Hacer otro simulacro</button><a class="btn" href="#progreso" data-go="progreso">Ver mi progreso</a></div>
+    <h2 class="h2" style="margin-top:10px">Repasa las respuestas</h2>
+    <div class="review">${items}</div>
+  </div>`;
+  if (p.pct === 100) toast('¡100%! Excelente trabajo');
+}
+
+/* ---------- Progreso ---------- */
+function statsSim(sel) {
+  const l = P.sims.filter(x => String(x.sel) === String(sel));
+  return { n: l.length, mejor: l.length ? Math.max(...l.map(x => x.pct)) : null, ultimo: l.length ? l[0].pct : null };
+}
+function renderProgreso() {
+  const tab = state.progTab || 'general';
+  const tabs = [['general', 'General'], ['capitulos', 'Capítulos'], ['simulacros', 'Simulacros'], ['reiniciar', 'Iniciar de nuevo']];
+  view.innerHTML = `
+  <div class="narrow col">
+    <div class="col centro" style="gap:10px"><h1 class="h1">Mi progreso</h1><p class="lead">Aquí se guardan todas tus estadísticas</p><p class="muted small">Conectado como <strong>${esc(SES.nombre)}</strong> · @${esc(SES.usuario)}</p><button class="btn btn-sm" type="button" data-act="salir">Cerrar sesión</button></div>
+    <div class="tabs centrado prog-tabs" role="tablist" aria-label="Partes del progreso">
+      ${tabs.map(([k, l]) => `<button class="btn" type="button" role="tab" aria-selected="${k === tab}" data-act="progtab" data-k="${k}">${l}</button>`).join('')}
+    </div>
+    <div id="progPanel" role="tabpanel" class="col">${progPanel(tab)}</div>
+  </div>`;
+}
+function progPanel(tab) {
+  const fecha = d => { try { return new Date(d).toLocaleDateString('es', { day: 'numeric', month: 'short' }); } catch (e) { return ''; } };
+  const tri = (a, b, c) => `<div class="cp-sims"><span><span class="muted small">${a[0]}</span><br><strong>${a[1]}</strong></span><span><span class="muted small">${b[0]}</span><br><strong>${b[1]}</strong></span><span><span class="muted small">${c[0]}</span><br><strong>${c[1]}</strong></span></div>`;
+  const nota = v => v != null ? v + '%' : '—';
+  if (tab === 'general') {
+    const leidosTot = Object.keys(P.leidos).length;
+    const pctTot = Math.round(leidosTot / TOTAL_SUBS * 100);
+    const completos = CAPS.filter(c => pctCap(c) === 100).length;
+    const conNota = P.sims.filter(x => x.tot);
+    const correctas = conNota.reduce((a, x) => a + x.ok, 0), respondidas = conNota.reduce((a, x) => a + x.tot, 0);
+    const promedio = P.sims.length ? Math.round(P.sims.reduce((a, x) => a + x.pct, 0) / P.sims.length) : null;
+    const mejor = P.sims.length ? Math.max(...P.sims.map(x => x.pct)) : null;
+    const stat = (lbl, val, sub) => `<div class="card stat"><span class="label">${lbl}</span><span class="big">${val}</span><span class="muted small">${sub}</span></div>`;
+    return `<div class="stats">
+      ${stat('Lectura total', pctTot + '%', `${leidosTot} de ${TOTAL_SUBS} subtítulos`)}
+      ${stat('Capítulos completos', `${completos} / 7`, completos === 7 ? '¡Leíste todo el libro!' : 'Leídos al 100%')}
+      ${stat('Simulacros hechos', P.sims.length, mejor != null ? `Mejor nota: ${mejor}%` : 'Todavía ninguno')}
+      ${stat('Respuestas correctas', correctas, respondidas ? `de ${respondidas} · promedio ${promedio}%` : 'Aún sin responder')}
+    </div>
+    <div class="card col centro" style="gap:10px"><span class="label">Tu lectura del libro</span><div class="bar" style="width:100%"><i style="width:${pctTot}%"></i></div><p class="muted small">${pctTot === 100 ? 'Leíste todos los subtítulos' : 'Sigue marcando los subtítulos que lees para ver tu avance'}</p></div>`;
+  }
+  if (tab === 'capitulos') {
+    return `<div class="caprog">${CAPS.map(c => { const p = pctCap(c), st = statsSim(c.n); return `
+      <div class="card cp">
+        <div class="cp-head"><span class="badge" style="background:var(--c${c.n})">${c.n}</span><b>${esc(c.title)}</b></div>
+        <div class="cp-row"><span class="muted small">Lectura</span><div class="bar"><i style="width:${p}%"></i></div><strong>${p}%</strong></div>
+        <p class="small muted">${leidosCap(c)} de ${c.subs.length} subtítulos leídos</p>
+        ${tri(['Simulacros', st.n], ['Nota más alta', nota(st.mejor)], ['Último', nota(st.ultimo)])}
+        <div class="row"><a class="btn btn-sm" href="#cap-${c.n}" data-go="cap-${c.n}">${p === 100 ? 'Repasar' : 'Seguir leyendo'}</a><button class="btn btn-sm" type="button" data-act="practicar" data-k="${c.n}">Practicar</button></div>
+      </div>`; }).join('')}</div>`;
+  }
+  if (tab === 'simulacros') {
+    const todos = statsSim('todos');
+    return `<div class="card col centro" style="gap:14px">
+        <span class="label">Simulacro de todos los capítulos</span>
+        ${tri(['Hechos', todos.n], ['Nota más alta', nota(todos.mejor)], ['Último', nota(todos.ultimo)])}
+        <button class="btn btn-primary" type="button" data-act="practicar" data-k="todos">Hacer simulacro completo</button>
+      </div>
+      <div class="card col" style="gap:12px">
+        <span class="label centro">Últimos simulacros</span>
+        ${P.sims.length ? P.sims.slice(0, 10).map(x => `<div class="hist"><span class="muted">${fecha(x.d)}</span><span>${esc(selNombre(x.sel))}${x.tot ? ` <span class="muted small">· ${x.ok} de ${x.tot}</span>` : ''}<div class="bar" style="margin-top:6px"><i style="width:${x.pct}%"></i></div></span><strong>${x.pct}%</strong></div>`).join('') : '<p class="muted centro">Todavía no has hecho ningún simulacro</p>'}
+      </div>`;
+  }
+  return `<div class="card col centro" style="gap:16px;padding:30px 24px">
+      <span class="label">Iniciar de nuevo</span>
+      <p class="lead">Vas a empezar desde cero, se borran los subtítulos que marcaste como leídos y los resultados de todos tus simulacros</p>
+      <div class="row" id="resetBox" style="justify-content:center"><button class="btn" type="button" data-act="reset">Borrar mi progreso</button></div>
+    </div>`;
+}
+
+/* ---------- Cuentas: entrar y crear cuenta ---------- */
+const limpiarUsuario = u => String(u).trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+const usuarioValido = u => /^[a-z0-9._-]{3,30}$/.test(u);
+const MSG = {
+  'auth/invalid-credential': 'Usuario o contraseña incorrectos',
+  'auth/wrong-password': 'Usuario o contraseña incorrectos',
+  'auth/user-not-found': 'Usuario o contraseña incorrectos',
+  'auth/invalid-email': 'Ese usuario no es válido',
+  'auth/email-already-in-use': 'Ese usuario ya existe, elige otro',
+  'auth/weak-password': 'La contraseña debe tener al menos 6 caracteres',
+  'auth/too-many-requests': 'Demasiados intentos, espera unos minutos y vuelve a probar',
+  'auth/network-request-failed': 'No hay conexión a internet'
+};
+function renderLogin(modo) {
+  state.login = modo || state.login || 'entrar';
+  document.body.classList.add('sin-sesion');
+  const crear = state.login === 'crear';
+  view.innerHTML = `
+  <div class="login">
+    <h1 class="h-display titulo" id="titulo" aria-label="Ética Pastoral">${letras('Ética Pastoral')}</h1>
+    <p class="sub centro">De pastor a pastor</p>
+    <div class="card login-card">
+      <div class="tabs centrado" role="tablist" aria-label="Entrar o crear cuenta">
+        <button class="btn" type="button" role="tab" aria-selected="${!crear}" data-act="login-modo" data-k="entrar">Entrar</button>
+        <button class="btn" type="button" role="tab" aria-selected="${crear}" data-act="login-modo" data-k="crear">Crear cuenta</button>
+      </div>
+      <form id="loginForm" class="col" style="gap:14px" novalidate>
+        ${crear ? `<label class="campo"><span>Nombre completo</span><input id="fNombre" name="nombre" type="text" autocomplete="name" required maxlength="80" placeholder="Por ejemplo, Juan Pérez Mora"></label>` : ''}
+        <label class="campo"><span>Usuario</span><input id="fUsuario" name="usuario" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required maxlength="30" placeholder="Por ejemplo, juan.perez"></label>
+        ${crear ? '<p class="muted small ayuda">Sin espacios ni tildes, puedes usar letras, números, punto o guion</p>' : ''}
+        <label class="campo"><span>Contraseña</span><input id="fClave" name="clave" type="password" autocomplete="${crear ? 'new-password' : 'current-password'}" required minlength="6" placeholder="Mínimo 6 caracteres"></label>
+        ${crear ? `<label class="campo"><span>Repite la contraseña</span><input id="fClave2" name="clave2" type="password" autocomplete="new-password" required minlength="6"></label>` : ''}
+        <p class="error" id="loginError" role="alert" hidden></p>
+        <button class="btn btn-primary btn-big" type="submit" id="loginBtn">${crear ? 'Crear mi cuenta' : 'Entrar'}</button>
+      </form>
+      <p class="muted small centro">${crear ? 'Tu progreso se guardará en tu cuenta y podrás seguir desde cualquier celular o computadora' : 'Si olvidaste tu contraseña, pídele ayuda a tu profesor'}</p>
+    </div>
+  </div>`;
+  animarTitulo();
+  $('#loginForm').addEventListener('submit', enviarLogin);
+}
+async function enviarLogin(e) {
+  e.preventDefault();
+  const crear = state.login === 'crear';
+  const err = $('#loginError'), btn = $('#loginBtn');
+  const mostrar = m => { err.textContent = m; err.hidden = false; };
+  err.hidden = true;
+  const usuario = limpiarUsuario($('#fUsuario').value), clave = $('#fClave').value;
+  if (!usuarioValido(usuario)) return mostrar('Escribe un usuario de 3 a 30 caracteres, sin espacios ni tildes');
+  if (clave.length < 6) return mostrar('La contraseña debe tener al menos 6 caracteres');
+  let nombre = '';
+  if (crear) {
+    nombre = $('#fNombre').value.trim().replace(/\s+/g, ' ');
+    if (nombre.length < 3) return mostrar('Escribe tu nombre completo');
+    if (clave !== $('#fClave2').value) return mostrar('Las contraseñas no coinciden');
+  }
+  btn.disabled = true; btn.textContent = crear ? 'Creando tu cuenta…' : 'Entrando…';
+  try {
+    if (crear) {
+      state.nuevo = { nombre, usuario };
+      const cred = await createUserWithEmailAndPassword(auth, usuario + DOMINIO, clave);
+      await setDoc(doc(fdb, 'usuarios', cred.user.uid), { nombre, usuario, leidos: [], sims: [], creado: serverTimestamp(), actualizado: serverTimestamp() });
+    } else {
+      await signInWithEmailAndPassword(auth, usuario + DOMINIO, clave);
+    }
+  } catch (ex) {
+    state.nuevo = null;
+    mostrar(MSG[ex.code] || 'No se pudo completar, inténtalo de nuevo');
+    btn.disabled = false; btn.textContent = crear ? 'Crear mi cuenta' : 'Entrar';
+  }
+}
+async function cargarSesion(user) {
+  SES.uid = user.uid;
+  SES.usuario = (user.email || '').replace(DOMINIO, '');
+  view.innerHTML = '<p class="muted centro" style="padding:60px 0">Cargando tu progreso…</p>';
+  try {
+    let snap = await getDoc(doc(fdb, 'usuarios', user.uid));
+    if (!snap.exists() && state.nuevo) { await new Promise(r => setTimeout(r, 600)); snap = await getDoc(doc(fdb, 'usuarios', user.uid)); }
+    const d = snap.exists() ? snap.data() : {};
+    SES.nombre = d.nombre || (state.nuevo && state.nuevo.nombre) || SES.usuario;
+    P.leidos = {}; (d.leidos || []).forEach(k => { P.leidos[k] = 1; });
+    P.sims = Array.isArray(d.sims) ? d.sims : [];
+  } catch (e) { toast('No se pudo cargar tu progreso, revisa tu conexión'); }
+  try { SES.esProfe = (await getDoc(doc(fdb, 'profesores', user.uid))).exists(); } catch (e) { SES.esProfe = false; }
+  state.nuevo = null;
+  document.body.classList.remove('sin-sesion');
+  $$('.solo-profe').forEach(el => { el.hidden = !SES.esProfe; });
+  let r0 = '';
+  try { r0 = (location.hash || '').slice(1); } catch (e) { /* sin hash */ }
+  state.route = ROUTES.test(r0) && (r0 !== 'panel' || SES.esProfe) ? r0 : 'inicio';
+  render();
+}
+async function salir() {
+  if (guardarT) { clearTimeout(guardarT); await guardarAhora(); }
+  await signOut(auth);
+}
+
+/* ---------- Panel del profesor ---------- */
+async function renderPanel() {
+  if (!SES.esProfe) { state.route = 'inicio'; return renderInicio(); }
+  view.innerHTML = `<div class="narrow col panel-wrap"><div class="col centro" style="gap:10px"><h1 class="h1">Panel del profesor</h1><p class="lead">El avance de todos tus estudiantes</p></div><p class="muted centro">Cargando estudiantes…</p></div>`;
+  try {
+    const qs = await getDocs(collection(fdb, 'usuarios'));
+    state.alumnos = qs.docs.map(d => ({ id: d.id, ...d.data() }));
+  } catch (e) {
+    view.innerHTML = `<div class="narrow col centro"><h1 class="h1">Panel del profesor</h1><p class="error">No se pudieron cargar los estudiantes, revisa tu conexión</p><button class="btn" type="button" data-act="panel-recargar">Intentar de nuevo</button></div>`;
+    return;
+  }
+  dibujarPanel();
+}
+function datosAlumno(a) {
+  const leidos = new Set(a.leidos || []), sims = Array.isArray(a.sims) ? a.sims : [];
+  const caps = CAPS.map(c => Math.round(c.subs.filter(s => leidos.has(c.n + '|' + s.id)).length / c.subs.length * 100));
+  const ts = a.actualizado && a.actualizado.toDate ? a.actualizado.toDate() : null;
+  return {
+    lectura: Math.round(leidos.size / TOTAL_SUBS * 100), caps, completos: caps.filter(p => p === 100).length,
+    nSims: sims.length, mejor: sims.length ? Math.max(...sims.map(x => x.pct)) : null,
+    prom: sims.length ? Math.round(sims.reduce((s, x) => s + x.pct, 0) / sims.length) : null, ts
+  };
+}
+function dibujarPanel() {
+  const q = (state.panelQ || '').toLowerCase(), orden = state.panelOrden || 'avance';
+  let lista = (state.alumnos || []).map(a => ({ a, d: datosAlumno(a) }));
+  const total = lista.length;
+  const promLect = total ? Math.round(lista.reduce((s, x) => s + x.d.lectura, 0) / total) : 0;
+  const totSims = lista.reduce((s, x) => s + x.d.nSims, 0);
+  const conNota = lista.filter(x => x.d.prom != null);
+  const promNota = conNota.length ? Math.round(conNota.reduce((s, x) => s + x.d.prom, 0) / conNota.length) : null;
+  if (q) lista = lista.filter(x => (x.a.nombre || '').toLowerCase().includes(q) || (x.a.usuario || '').includes(q));
+  lista.sort((x, y) => orden === 'nombre' ? (x.a.nombre || '').localeCompare(y.a.nombre || '', 'es')
+    : orden === 'reciente' ? ((y.d.ts ? y.d.ts.getTime() : 0) - (x.d.ts ? x.d.ts.getTime() : 0))
+    : orden === 'nota' ? ((y.d.mejor ?? -1) - (x.d.mejor ?? -1))
+    : (y.d.lectura - x.d.lectura));
+  const fecha = d => d ? d.toLocaleDateString('es', { day: 'numeric', month: 'short' }) : '—';
+  const nota = v => v != null ? v + '%' : '—';
+  const stat = (lbl, val) => `<div class="card stat"><span class="label">${lbl}</span><span class="big">${val}</span></div>`;
+  view.innerHTML = `
+  <div class="narrow col panel-wrap">
+    <div class="col centro" style="gap:10px"><h1 class="h1">Panel del profesor</h1><p class="lead">El avance de todos tus estudiantes</p></div>
+    <div class="stats">${stat('Estudiantes', total)}${stat('Lectura promedio', promLect + '%')}${stat('Simulacros hechos', totSims)}${stat('Nota promedio', nota(promNota))}</div>
+    <div class="panel-tools">
+      <label class="campo"><span>Buscar estudiante</span><input id="panelBuscar" type="search" value="${esc(state.panelQ || '')}" placeholder="Nombre o usuario"></label>
+      <label class="campo"><span>Ordenar por</span><select id="panelOrden">
+        <option value="avance"${orden === 'avance' ? ' selected' : ''}>Más lectura</option>
+        <option value="nota"${orden === 'nota' ? ' selected' : ''}>Mejor nota</option>
+        <option value="reciente"${orden === 'reciente' ? ' selected' : ''}>Actividad reciente</option>
+        <option value="nombre"${orden === 'nombre' ? ' selected' : ''}>Nombre</option>
+      </select></label>
+      <button class="btn" type="button" data-act="panel-recargar">Actualizar</button>
+    </div>
+    <div class="alumnos">${lista.length ? lista.map(({ a, d }) => `
+      <details class="card alumno">
+        <summary>
+          <span class="al-nom"><b>${esc(a.nombre || a.usuario || 'Sin nombre')}</b><span class="muted small">@${esc(a.usuario || '')}${a.id === SES.uid ? ' · tú' : ''}</span></span>
+          <span class="al-bar"><span class="bar"><i style="width:${d.lectura}%"></i></span><span class="small">${d.lectura}% leído</span></span>
+          <span class="al-num"><span class="muted small">Simulacros</span><strong>${d.nSims}</strong></span>
+          <span class="al-num"><span class="muted small">Mejor nota</span><strong>${nota(d.mejor)}</strong></span>
+        </summary>
+        <div class="al-det">
+          <p class="small muted">Capítulos completos ${d.completos} / 7 · nota promedio ${nota(d.prom)} · última actividad ${fecha(d.ts)}</p>
+          <div class="al-caps">${d.caps.map((p, i) => `<div class="cp-row"><span class="small">Cap. ${i + 1}</span><div class="bar"><i style="width:${p}%"></i></div><strong>${p}%</strong></div>`).join('')}</div>
+        </div>
+      </details>`).join('') : `<p class="muted centro">${total ? 'Ningún estudiante coincide con la búsqueda' : 'Todavía no hay estudiantes registrados'}</p>`}</div>
+  </div>`;
+  const b = $('#panelBuscar');
+  b.addEventListener('input', () => { state.panelQ = b.value; const pos = b.selectionStart; dibujarPanel(); const nb = $('#panelBuscar'); nb.focus(); nb.setSelectionRange(pos, pos); });
+  $('#panelOrden').addEventListener('change', e => { state.panelOrden = e.target.value; dibujarPanel(); });
+}
+
+/* ---------- Avisos ---------- */
+let toastT;
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2600); }
+
+/* ---------- Clics ---------- */
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-go],[data-act]');
+  if (!t) return;
+  if (t.dataset.go) { e.preventDefault(); go(t.dataset.go); return; }
+  const a = t.dataset.act, k = t.dataset.k, s = state.sim;
+  switch (a) {
+    case 'nodo': elegirNodo(+k); break;
+    case 'login-modo': renderLogin(k); break;
+    case 'salir': salir(); break;
+    case 'panel-recargar': renderPanel(); break;
+    case 'tab': { const n = +state.route.slice(4); state.tab[n] = k; renderCap(n); const tb = $(`[data-act="tab"][data-k="${k}"]`); if (tb) tb.focus({ preventScroll: true }); break; }
+    case 'abrir': abrirHoja(+state.route.slice(4), +k); break;
+    case 'cerrar': cerrarHoja(); break;
+    case 'anterior': if (state.hoja && state.hoja.i > 0) { state.hoja.i--; dibujarHoja(); } break;
+    case 'proximo': if (state.hoja && state.hoja.i < CAPS[state.hoja.n - 1].subs.length - 1) { state.hoja.i++; dibujarHoja(); } break;
+    case 'leido': marcarLeido(); break;
+    case 'practicar': state.simSel = k; state.sim = null; go('simulacro'); break;
+    case 'sel': state.simSel = k; renderSim(); break;
+    case 'empezar': empezarSim(); break;
+    case 'elegir': { const q = s.qs[s.i]; if (s.resp[s.i]) return; const pick = +k; s.resp[s.i] = { pick, ok: q.ops[pick].ok }; dibujarPregunta(); break; }
+    case 'revisar': {
+      const q = s.qs[s.i], sel = $$('.prow select', view).map(x => x.value);
+      if (sel.some(v => !v)) { toast('Elige una respuesta en cada fila'); return; }
+      s.resp[s.i] = { sel, aciertos: q.pairs.filter((p, j) => sel[j] === p[1]).length }; s.borrador = null; dibujarPregunta();
+      break;
+    }
+    case 'siguiente': s.i++; s.borrador = null; dibujarPregunta(); window.scrollTo(0, 0); break;
+    case 'salir': state.sim = null; renderSim(); break;
+    case 'otro': state.sim = null; renderSim(); window.scrollTo(0, 0); break;
+    case 'progtab': state.progTab = k; renderProgreso(); { const tb = $(`[data-act="progtab"][data-k="${k}"]`); if (tb) tb.focus({ preventScroll: true }); } break;
+    case 'reset': $('#resetBox').innerHTML = '<span class="small" style="width:100%">¿Seguro? Esto no se puede deshacer</span><button class="btn btn-primary" type="button" data-act="reset-si">Sí, borrar todo</button><button class="btn" type="button" data-act="reset-no">Cancelar</button>'; break;
+    case 'reset-no': renderProgreso(); break;
+    case 'reset-si': P.leidos = {}; P.sims = []; save('leidos'); save('sims'); state.progTab = 'general'; renderProgreso(); toast('Listo, empiezas desde cero'); break;
+  }
+});
+document.addEventListener('change', e => {
+  if (!e.target.matches('.prow select') || !state.sim) return;
+  state.sim.borrador = $$('.prow select', view).map(x => x.value);
+});
+document.addEventListener('keydown', e => {
+  if (!state.hoja) return;
+  if (e.key === 'Escape') { e.preventDefault(); cerrarHoja(); }
+  else if (e.key === 'Tab') {
+    const f = $$('#sheet button:not([disabled]), #sheet [tabindex="0"]'); if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+});
+
+/* Botón para subir */
+const toTop = $('#toTop');
+window.addEventListener('scroll', () => { toTop.hidden = window.scrollY < 700; }, { passive: true });
+toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: RM() ? 'auto' : 'smooth' }));
+
+/* ---------- Arranque ---------- */
+document.documentElement.lang = 'es';
+document.body.classList.add('sin-sesion');
+view.innerHTML = '<p class="muted centro" style="padding:80px 0">Cargando…</p>';
+onAuthStateChanged(auth, user => {
+  if (user) cargarSesion(user);
+  else { SES.uid = null; SES.esProfe = false; P.leidos = {}; P.sims = []; state.sim = null; cerrarHoja(true); $$('.solo-profe').forEach(el => { el.hidden = true; }); renderLogin('entrar'); }
+});
+})();
+</script>
+</body>
+</html>
